@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Leetcode on Charles Chen</title>
+    <link>https://example.com/categories/leetcode/</link>
+    <description>Recent content in Leetcode on Charles Chen</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 16 Dec 2020 09:58:57 +0800</lastBuildDate><atom:link href="https://example.com/categories/leetcode/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>真分数分解为埃及分数思路</title>
+      <link>https://example.com/p/%E7%9C%9F%E5%88%86%E6%95%B0%E5%88%86%E8%A7%A3%E4%B8%BA%E5%9F%83%E5%8F%8A%E5%88%86%E6%95%B0%E6%80%9D%E8%B7%AF/</link>
+      <pubDate>Wed, 16 Dec 2020 09:58:57 +0800</pubDate>
+      
+      <guid>https://example.com/p/%E7%9C%9F%E5%88%86%E6%95%B0%E5%88%86%E8%A7%A3%E4%B8%BA%E5%9F%83%E5%8F%8A%E5%88%86%E6%95%B0%E6%80%9D%E8%B7%AF/</guid>
+      <description>题目描述
+分子为1的分数称为埃及分数。现输入一个真分数(分子比分母小的分数，叫做真分数)，请将该分数分解为埃及分数。如：8/11 = 1/2+1/5+1/55+1/110。
+注：真分数指分子小于分母的分数，分子和分母有可能gcd不为1！
+如有多个解，请输出任意一个。
+请注意本题含有多组样例输入！
+【贪心算法】 设a、b为互质正整数，a&amp;lt;b 分数a/b 可用以下的步骤分解成若干个单位分数之和： 步骤一： 用b除以a，得商数q1及余数r1,即b=a*q1+r1 步骤二： a/b=1/(q1+1）+(a-r)/b(q1+1） 步骤三： 重复步骤2，直到分解完毕
+以上其实是数学家斐波那契提出的一种求解分数的贪心算法，准确的算法表述应该是这样的：
+设某个真分数的分子为a，分母为b;
+把c=(b/a+1)作为分解式中第一个分数的分母；( c = quotient+1)
+将a-b%a作为新的a； 将b*c作为新的b；( new a = quotient, new b *= quotient+1 )
+如果a等于1，则最后一个分数为1/b,算法结束；(if a = 1)
+如果a大于1但是a能整除b，则最后一个分数为1/(b/a),算法结束；(if a &amp;gt; 1 &amp;amp;&amp;amp; a%b = 0)
+否则重复上面的步骤。</description>
+    </item>
+    
+  </channel>
+</rss>
