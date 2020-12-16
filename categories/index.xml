@@ -1,54 +1,36 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on Example Site</title>
-    <link>https://charlesChen02.github.io/categories/</link>
-    <description>Recent content in Categories on Example Site</description>
+    <title>Categories on Charles Chen</title>
+    <link>https://example.com/categories/</link>
+    <description>Recent content in Categories on Charles Chen</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 09 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://charlesChen02.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 16 Dec 2020 09:58:57 +0800</lastBuildDate><atom:link href="https://example.com/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Test</title>
-      <link>https://charlesChen02.github.io/categories/test/</link>
-      <pubDate>Wed, 09 Sep 2020 00:00:00 +0000</pubDate>
+      <title>algorithm</title>
+      <link>https://example.com/categories/algorithm/</link>
+      <pubDate>Wed, 16 Dec 2020 09:58:57 +0800</pubDate>
       
-      <guid>https://charlesChen02.github.io/categories/test/</guid>
+      <guid>https://example.com/categories/algorithm/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>测试</title>
-      <link>https://charlesChen02.github.io/categories/%E6%B5%8B%E8%AF%95/</link>
-      <pubDate>Wed, 09 Sep 2020 00:00:00 +0000</pubDate>
+      <title>Leetcode</title>
+      <link>https://example.com/categories/leetcode/</link>
+      <pubDate>Wed, 16 Dec 2020 09:58:57 +0800</pubDate>
       
-      <guid>https://charlesChen02.github.io/categories/%E6%B5%8B%E8%AF%95/</guid>
+      <guid>https://example.com/categories/leetcode/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>syntax</title>
-      <link>https://charlesChen02.github.io/categories/syntax/</link>
-      <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+      <title>simple notes for editing.</title>
+      <link>https://example.com/categories/test/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://charlesChen02.github.io/categories/syntax/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>themes</title>
-      <link>https://charlesChen02.github.io/categories/themes/</link>
-      <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://charlesChen02.github.io/categories/themes/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Test with whitespaces</title>
-      <link>https://charlesChen02.github.io/categories/test-with-whitespaces/</link>
-      <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://charlesChen02.github.io/categories/test-with-whitespaces/</guid>
+      <guid>https://example.com/categories/test/</guid>
       <description></description>
     </item>
     
