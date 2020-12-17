@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='A personal site could do much with your interview and make you more competitive! In this paper I would share with you detailed steps for how to create a new public site using hugo, which is one of latest tools for building a site.
+Git
+Go &amp;gt; 1.11
+brew install hugo or
+port install hugo if you are using MacPorts.
+Then you can simply jump to step 2 to continue.'><title>Steps to create a personal site with hugo</title>
+
+<link rel='canonical' href='https://example.com/p/steps-to-create-a-personal-site-with-hugo/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Steps to create a personal site with hugo'>
+<meta property='og:description' content='A personal site could do much with your interview and make you more competitive! In this paper I would share with you detailed steps for how to create a new public site using hugo, which is one of latest tools for building a site.
+Git
+Go &amp;gt; 1.11
+brew install hugo or
+port install hugo if you are using MacPorts.
+Then you can simply jump to step 2 to continue.'>
+<meta property='og:url' content='https://example.com/p/steps-to-create-a-personal-site-with-hugo/'>
+<meta property='og:site_name' content='Charles Chen'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='toturial' /><meta property='article:tag' content='hugo' /><meta property='article:published_time' content='2020-12-17T10:55:23&#43;08:00'/><meta property='article:modified_time' content='2020-12-17T10:55:23&#43;08:00'/>
+<meta name="twitter:title" content="Steps to create a personal site with hugo">
+<meta name="twitter:description" content="A personal site could do much with your interview and make you more competitive! In this paper I would share with you detailed steps for how to create a new public site using hugo, which is one of latest tools for building a site.
+Git
+Go &amp;gt; 1.11
+brew install hugo or
+port install hugo if you are using MacPorts.
+Then you can simply jump to step 2 to continue.">
+    </head>
+    <body class="">
+        <div class="container flex on-phone--column align-items--flex-start extended article-page with-toolbar">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu111f960834a148580c6a043e19b92e3e_20144_300x0_resize_box_2.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+        
+        <h1 class="site-name"><a href="https://example.com/">Charles Chen</a></h1>
+        <h2 class="site-description">Graduated in Australian National University. Dosing Master degree in University of Melbone. Major in Artificial Intelligence, Deep Learning.</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+    </ol>
+</aside>
+
+            <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://example.com/" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            
+                <a href="/categories/toturial/">toturial</a>
+            
+        
+            
+                <a href="/categories/hugo/">hugo</a>
+            
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/p/steps-to-create-a-personal-site-with-hugo/">Steps to create a personal site with hugo</a>
+    </h2>
+
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">Dec 17, 2020</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <h2 id="a-personal-site-could-do-much-with-your-interview-and-make-you-more-competitive">A personal site could do much with your interview and make you more competitive!</h2>
+<p>In this paper I would share with you detailed steps for how to create a new public site using hugo, which is one of latest tools for building a site.</p>
+<!-- raw HTML omitted -->
+<p><a class="link" href="https://git-scm.com/"  target="_blank" rel="noopener"
+    >Git</a></p>
+<p><a class="link" href="https://golang.org/dl/"  target="_blank" rel="noopener"
+    >Go &gt; 1.11</a></p>
+<!-- raw HTML omitted -->
+<pre><code>brew install hugo
+</code></pre><p>or</p>
+<pre><code>port install hugo
+</code></pre><p>if you are using MacPorts.</p>
+<p>Then you can simply jump to step 2 to continue.</p>
+<!-- raw HTML omitted -->
+<pre><code>choco install hugo -confirm
+</code></pre><p>or for the extended version:</p>
+<pre><code>choco install hugo-extended -confirm
+</code></pre><p>If you are using <!-- raw HTML omitted -->Scoop<!-- raw HTML omitted --> for package management, you can install Hugo with following:</p>
+<pre><code>scoop install hugo
+</code></pre><p>or</p>
+<pre><code>scoop install hugo-extended
+</code></pre><p>for extended version.</p>
+<!-- raw HTML omitted -->
+<p>Linux can use <a class="link" href="https://docs.brew.sh/Homebrew-on-Linux"  target="_blank" rel="noopener"
+    >Homebrew</a> with the following one-liner:</p>
+<pre><code>brew install hugo
+</code></pre><p>which is the same as in Mac.</p>
+<!-- raw HTML omitted -->
+<pre><code>hugo version
+</code></pre><p>it would show something that begin with:</p>
+<pre><code>Hugo Static Site Generator v0.79.0-1415EFDC 
+</code></pre><p>and you can then go to the next step!</p>
+<!-- raw HTML omitted -->
+<pre><code>hugo new site &lt;name of your blog project&gt;
+</code></pre><p>to initalize your blog.</p>
+<p>In this example, I just name by blog project (it is not the name of the site) as &ldquo;blog&rdquo; and I could use the command:</p>
+<pre><code>hugo new site blog
+</code></pre><p>to init it.</p>
+<p>at this stage, the project would be created at the path that you execute this command.</p>
+<p>If you check the name of folders in the current path you could find a new folder named &ldquo;blog&rdquo; (or the naem you gave to it).</p>
+<pre><code>&gt;ls
+...
+d-----       16/12/2020  11:16 AM                blog
+...
+</code></pre><p>(this is the way of windows showing the folder info).</p>
+<p>Then we enter the folder.</p>
+<pre><code>&gt;cd blog
+blog/&gt;ls
+</code></pre><p>you could see the items that hugo has initialized for you.</p>
+<!-- raw HTML omitted -->
+<p><a class="link" href="https://gohugo.io/content-management/"  target="_blank" rel="noopener"
+    >basic toturial</a> which is very time consuming and inefficient. Instead we can download existing themes that designed by others and make improvements based on it!
+<a class="link" href="https://themes.gohugo.io"  target="_blank" rel="noopener"
+    >themes.gohugo.io</a> offers a wide range of themes that you could choose from.</p>
+<p>In this example I would just choose one of it for demo.</p>
+<p><figure>
+		<a href="/p/steps-to-create-a-personal-site-with-hugo/stack_theme.png" data-size="1848x737">
+			<img srcset="/p/steps-to-create-a-personal-site-with-hugo/stack_theme_hu2233301c18cc31ac21a7b1e968a4c858_269932_480x0_resize_box_2.png 480w, /p/steps-to-create-a-personal-site-with-hugo/stack_theme_hu2233301c18cc31ac21a7b1e968a4c858_269932_1024x0_resize_box_2.png 1024w"
+				src="/p/steps-to-create-a-personal-site-with-hugo/stack_theme.png" width="1848" height="737" loading="lazy"
+				alt="stack_theme">
+		</a>
+		
+		<figcaption>stack_theme</figcaption>
+		
+	</figure></p>
+<p>Often there are detailed info about how to download it below the basic info of the theme.</p>
+<p>In this example, it suggests me to use git to clone this theme under by site folder.</p>
+<pre><code>git clone https://github.com/CaiJimmy/hugo-theme-stack/ themes/hugo-theme-stack
+</code></pre><p>then go to the themes/hugo-theme-stack/exampleSite and use the config inside the folder to replace the config.toml in the site root folder. Alternatively you can copy everything in the example site and overwrite things in your site root folder for a quicker start.</p>
+<p>For some themes that using .yaml instead of .toml, you can delete the config.toml in the root folder and only leave the config.yaml provided by the theme as hugo is compatible of reading various format of config files.</p>
+<!-- raw HTML omitted -->
+<pre><code>hugo server -t hugo-theme-stack --buildDrafts
+</code></pre><p>or simply</p>
+<pre><code>hugo server 
+</code></pre><p>if you have overwrite config.toml in the root folder.</p>
+<p>The terminal would tell you the local address to visit your site.</p>
+<pre><code>Start building sites …
+
+                   | EN
+-------------------+-----
+  Pages            | 27
+  Paginator pages  |  0
+  Non-page files   |  2
+  Static files     |  0
+  Processed images |  8
+  Aliases          | 13
+  Sitemaps         |  1
+  Cleaned          |  0
+
+Built in 725 ms
+Watching for changes in 
+\blog\{archetypes,assets,content,data,layouts,static,themes}
+Watching for config changes in 
+\blog\config.yaml
+Environment: &quot;development&quot;
+Serving pages from memory
+Running in Fast Render Mode. For full rebuilds on change: hugo server --disableFastRender
+Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
+</code></pre><p>Now you can go to the address and have a look with your new site!</p>
+<!-- raw HTML omitted -->
+<pre><code>hugo new post/[name of your blog]/index.md
+</code></pre><p>create the basic structure of your blog.</p>
+<p>ps: you could also simply use:</p>
+<pre><code>hugo new post/[name].md
+</code></pre><p>to create your new post, but then if you want to attach images to your posts you would need to putting them mixed, which would increase the difficulty of maintence in the long run.</p>
+<p>Then you could go to the /post/ folder and edit the .md file using various tools that supports reading markdown file. Those .md would be the content of your post.</p>
+<!-- raw HTML omitted -->
+<p>title: the title of your post, you can edit as you wish, remember using quote if your title include spaces in it.</p>
+<p>date: the time that the post was created, you could often leave it.</p>
+<p>draft: true</p>
+<p>this means this post is in draft mode, and would not included when building (mentioned later) you can leave it and avtivate &ndash;buildDrafts flag when building the site or simply delete it if you think it is unnecessary.</p>
+<p>Apart from these attributes, there are also some other attributes that can be included in the header:</p>
+<p><!-- raw HTML omitted -->description<!-- raw HTML omitted -->: this part can be the subtitle of the post.</p>
+<p><!-- raw HTML omitted -->slug<!-- raw HTML omitted -->: the slug of the post.</p>
+<p><!-- raw HTML omitted -->image<!-- raw HTML omitted -->: the image you want to put at the top of the post.</p>
+<p><!-- raw HTML omitted -->categories<!-- raw HTML omitted -->: the categories that you want to add to this post.</p>
+<p><!-- raw HTML omitted --> tags<!-- raw HTML omitted -->: the tage of the post.</p>
+<p>The format of using categories is:</p>
+<pre><code>categories:
+    - Test
+    - toturial
+</code></pre><p>or</p>
+<pre><code>categories: [Test,toturial]
+</code></pre><p>In this case, this post is categorized as Test and toturial on the site.</p>
+<p>there may be more attributes that could be added in the header, you can find them <a class="link" href="https://gohugo.io/variables/page/"  target="_blank" rel="noopener"
+    >here</a>.</p>
+<!-- raw HTML omitted -->
+<pre><code>hugo
+</code></pre><p>to build the site locally. (converting everything into html to get ready for deployment).</p>
+<p>To put your site into Internet, you first need a respority to store all you resources for your site. Here we choose github as such store.</p>
+<!-- raw HTML omitted -->
+<p><a class="link" href="https://github.com/"  target="_blank" rel="noopener"
+    >www.github.com</a></p>
+<p>or if you still not have one, register <a class="link" href="https://github.com/join"  target="_blank" rel="noopener"
+    >here</a>.</p>
+<!-- raw HTML omitted -->
+<p><figure>
+		<a href="/p/steps-to-create-a-personal-site-with-hugo/new_repo.png" data-size="437x242">
+			<img srcset="/p/steps-to-create-a-personal-site-with-hugo/new_repo_hu3a0a69b614b41e1ceed30d50aabd815b_23498_480x0_resize_box_2.png 480w, /p/steps-to-create-a-personal-site-with-hugo/new_repo_hu3a0a69b614b41e1ceed30d50aabd815b_23498_1024x0_resize_box_2.png 1024w"
+				src="/p/steps-to-create-a-personal-site-with-hugo/new_repo.png" width="437" height="242" loading="lazy"
+				alt="new repo">
+		</a>
+		
+		<figcaption>new repo</figcaption>
+		
+	</figure></p>
+<p><!-- raw HTML omitted -->Note<!-- raw HTML omitted -->: the name of the repo has to be the same as your accout nick name.</p>
+<p>The format of the repo name should be:</p>
+<pre><code>[your username in lower case].github.io
+</code></pre><p>For example:</p>
+<p><figure>
+		<a href="/p/steps-to-create-a-personal-site-with-hugo/repo_name.png" data-size="627x113">
+			<img srcset="/p/steps-to-create-a-personal-site-with-hugo/repo_name_hu65890d87307ca3f27ec87ab3c7493122_11839_480x0_resize_box_2.png 480w, /p/steps-to-create-a-personal-site-with-hugo/repo_name_hu65890d87307ca3f27ec87ab3c7493122_11839_1024x0_resize_box_2.png 1024w"
+				src="/p/steps-to-create-a-personal-site-with-hugo/repo_name.png" width="627" height="113" loading="lazy"
+				alt="repo name">
+		</a>
+		
+		<figcaption>repo name</figcaption>
+		
+	</figure></p>
+<p>ensure that your repo is public so that other can visit your site!</p>
+<p><figure>
+		<a href="/p/steps-to-create-a-personal-site-with-hugo/pub.png" data-size="650x77">
+			<img srcset="/p/steps-to-create-a-personal-site-with-hugo/pub_huba20939967388a84830d6ce05a91c0ec_5445_480x0_resize_box_2.png 480w, /p/steps-to-create-a-personal-site-with-hugo/pub_huba20939967388a84830d6ce05a91c0ec_5445_1024x0_resize_box_2.png 1024w"
+				src="/p/steps-to-create-a-personal-site-with-hugo/pub.png" width="650" height="77" loading="lazy"
+				alt="pub">
+		</a>
+		
+		<figcaption>pub</figcaption>
+		
+	</figure></p>
+<p>leave other as default or add anything you like in description.</p>
+<p>Now you get a empty repo ready to store your site contents!</p>
+<!-- raw HTML omitted -->
+<p>Building the site by overwriting baseUrl and theme.</p>
+<pre><code>hugo --theme=hugo-theme-stack --baseUrl=&quot;https://[your username].github.io&quot; --buildDrafts 
+</code></pre><p>(you can ignore the &ndash;buildDrafts flag if you removed draft attributes in your posts that your wish to build)</p>
+<p>Now there would be a new folder named /public/ in your root folder.</p>
+<p>enter the public/ folder.</p>
+<pre><code>cd public
+</code></pre><p>All contents in the public/ folder are contents that hugo built for you, you then just need to upload everything in this public/ folder to the remote repo.</p>
+<p>We use git to complete this step:</p>
+<pre><code>blog/public&gt;git init
+blog/public&gt;git add .
+blog/public&gt;git commit -m &quot;initial upload&quot;
+blog/public&gt;git remote add origin [your repo address for your site]
+blog/public&gt;git push -u origin master
+</code></pre><p>then enter your username and password for your github account.</p>
+<p>When the push completed, you should be able to access your personal site without much trouble!</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>You can modify the strucure of the existing theme or even create on your own! <a class="link" href="https://gohugo.io/content-management/"  target="_blank" rel="noopener"
+    >Hugo Officical Site</a> offered detailed instructions on how to customize your personal site and you can try it yourself!</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/toturial/">toturial</a>
+        
+            <a href="/tags/hugo/">hugo</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Charles Chen</span>
+    </section>
+    </footer>
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+</aside>
+
+
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">&copy; 2020 Charles Chen</section>
+    <section class="powerby">Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="1.1.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true" style="display:none">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+            </main>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"
+    integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=" crossorigin="anonymous"></script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<link rel="stylesheet" href="/css/highlight/light.min.css" media="(prefers-color-scheme: light)">
+<link rel="stylesheet" href="/css/highlight/dark.min.css" media="(prefers-color-scheme: dark)">
+
+    </body>
+</html>

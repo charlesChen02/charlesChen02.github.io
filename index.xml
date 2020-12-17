@@ -2,16 +2,217 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Charles Chen</title>
-        <link>https://charlesChen02.github.io/</link>
+        <link>https://example.com/</link>
         <description>Recent content on Charles Chen</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Wed, 16 Dec 2020 09:58:57 +0800</lastBuildDate><atom:link href="https://charlesChen02.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 17 Dec 2020 10:55:23 +0800</lastBuildDate><atom:link href="https://example.com/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Steps to create a personal site with hugo</title>
+        <link>https://example.com/p/steps-to-create-a-personal-site-with-hugo/</link>
+        <pubDate>Thu, 17 Dec 2020 10:55:23 +0800</pubDate>
+        
+        <guid>https://example.com/p/steps-to-create-a-personal-site-with-hugo/</guid>
+        <description>&lt;h2 id=&#34;a-personal-site-could-do-much-with-your-interview-and-make-you-more-competitive&#34;&gt;A personal site could do much with your interview and make you more competitive!&lt;/h2&gt;
+&lt;p&gt;In this paper I would share with you detailed steps for how to create a new public site using hugo, which is one of latest tools for building a site.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://git-scm.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Git&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://golang.org/dl/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Go &amp;gt; 1.11&lt;/a&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;pre&gt;&lt;code&gt;brew install hugo
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;or&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;port install hugo
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;if you are using MacPorts.&lt;/p&gt;
+&lt;p&gt;Then you can simply jump to step 2 to continue.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;pre&gt;&lt;code&gt;choco install hugo -confirm
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;or for the extended version:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;choco install hugo-extended -confirm
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;If you are using &lt;!-- raw HTML omitted --&gt;Scoop&lt;!-- raw HTML omitted --&gt; for package management, you can install Hugo with following:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;scoop install hugo
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;or&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;scoop install hugo-extended
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;for extended version.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;Linux can use &lt;a class=&#34;link&#34; href=&#34;https://docs.brew.sh/Homebrew-on-Linux&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Homebrew&lt;/a&gt; with the following one-liner:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;brew install hugo
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;which is the same as in Mac.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;pre&gt;&lt;code&gt;hugo version
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;it would show something that begin with:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Hugo Static Site Generator v0.79.0-1415EFDC 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;and you can then go to the next step!&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;pre&gt;&lt;code&gt;hugo new site &amp;lt;name of your blog project&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;to initalize your blog.&lt;/p&gt;
+&lt;p&gt;In this example, I just name by blog project (it is not the name of the site) as &amp;ldquo;blog&amp;rdquo; and I could use the command:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;hugo new site blog
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;to init it.&lt;/p&gt;
+&lt;p&gt;at this stage, the project would be created at the path that you execute this command.&lt;/p&gt;
+&lt;p&gt;If you check the name of folders in the current path you could find a new folder named &amp;ldquo;blog&amp;rdquo; (or the naem you gave to it).&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt;ls
+...
+d-----       16/12/2020  11:16 AM                blog
+...
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;(this is the way of windows showing the folder info).&lt;/p&gt;
+&lt;p&gt;Then we enter the folder.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt;cd blog
+blog/&amp;gt;ls
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;you could see the items that hugo has initialized for you.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/content-management/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;basic toturial&lt;/a&gt; which is very time consuming and inefficient. Instead we can download existing themes that designed by others and make improvements based on it!
+&lt;a class=&#34;link&#34; href=&#34;https://themes.gohugo.io&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;themes.gohugo.io&lt;/a&gt; offers a wide range of themes that you could choose from.&lt;/p&gt;
+&lt;p&gt;In this example I would just choose one of it for demo.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+		&lt;a href=&#34;https://example.com/p/steps-to-create-a-personal-site-with-hugo/stack_theme.png&#34; data-size=&#34;1848x737&#34;&gt;
+			&lt;img srcset=&#34;https://example.com/p/steps-to-create-a-personal-site-with-hugo/stack_theme_hu2233301c18cc31ac21a7b1e968a4c858_269932_480x0_resize_box_2.png 480w, https://example.com/p/steps-to-create-a-personal-site-with-hugo/stack_theme_hu2233301c18cc31ac21a7b1e968a4c858_269932_1024x0_resize_box_2.png 1024w&#34;
+				src=&#34;https://example.com/p/steps-to-create-a-personal-site-with-hugo/stack_theme.png&#34; width=&#34;1848&#34; height=&#34;737&#34; loading=&#34;lazy&#34;
+				alt=&#34;stack_theme&#34;&gt;
+		&lt;/a&gt;
+		
+		&lt;figcaption&gt;stack_theme&lt;/figcaption&gt;
+		
+	&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;Often there are detailed info about how to download it below the basic info of the theme.&lt;/p&gt;
+&lt;p&gt;In this example, it suggests me to use git to clone this theme under by site folder.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git clone https://github.com/CaiJimmy/hugo-theme-stack/ themes/hugo-theme-stack
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;then go to the themes/hugo-theme-stack/exampleSite and use the config inside the folder to replace the config.toml in the site root folder. Alternatively you can copy everything in the example site and overwrite things in your site root folder for a quicker start.&lt;/p&gt;
+&lt;p&gt;For some themes that using .yaml instead of .toml, you can delete the config.toml in the root folder and only leave the config.yaml provided by the theme as hugo is compatible of reading various format of config files.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;pre&gt;&lt;code&gt;hugo server -t hugo-theme-stack --buildDrafts
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;or simply&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;hugo server 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;if you have overwrite config.toml in the root folder.&lt;/p&gt;
+&lt;p&gt;The terminal would tell you the local address to visit your site.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Start building sites …
+
+                   | EN
+-------------------+-----
+  Pages            | 27
+  Paginator pages  |  0
+  Non-page files   |  2
+  Static files     |  0
+  Processed images |  8
+  Aliases          | 13
+  Sitemaps         |  1
+  Cleaned          |  0
+
+Built in 725 ms
+Watching for changes in 
+\blog\{archetypes,assets,content,data,layouts,static,themes}
+Watching for config changes in 
+\blog\config.yaml
+Environment: &amp;quot;development&amp;quot;
+Serving pages from memory
+Running in Fast Render Mode. For full rebuilds on change: hugo server --disableFastRender
+Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now you can go to the address and have a look with your new site!&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;pre&gt;&lt;code&gt;hugo new post/[name of your blog]/index.md
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;create the basic structure of your blog.&lt;/p&gt;
+&lt;p&gt;ps: you could also simply use:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;hugo new post/[name].md
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;to create your new post, but then if you want to attach images to your posts you would need to putting them mixed, which would increase the difficulty of maintence in the long run.&lt;/p&gt;
+&lt;p&gt;Then you could go to the /post/ folder and edit the .md file using various tools that supports reading markdown file. Those .md would be the content of your post.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;title: the title of your post, you can edit as you wish, remember using quote if your title include spaces in it.&lt;/p&gt;
+&lt;p&gt;date: the time that the post was created, you could often leave it.&lt;/p&gt;
+&lt;p&gt;draft: true&lt;/p&gt;
+&lt;p&gt;this means this post is in draft mode, and would not included when building (mentioned later) you can leave it and avtivate &amp;ndash;buildDrafts flag when building the site or simply delete it if you think it is unnecessary.&lt;/p&gt;
+&lt;p&gt;Apart from these attributes, there are also some other attributes that can be included in the header:&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;description&lt;!-- raw HTML omitted --&gt;: this part can be the subtitle of the post.&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;slug&lt;!-- raw HTML omitted --&gt;: the slug of the post.&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;image&lt;!-- raw HTML omitted --&gt;: the image you want to put at the top of the post.&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;categories&lt;!-- raw HTML omitted --&gt;: the categories that you want to add to this post.&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt; tags&lt;!-- raw HTML omitted --&gt;: the tage of the post.&lt;/p&gt;
+&lt;p&gt;The format of using categories is:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;categories:
+    - Test
+    - toturial
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;or&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;categories: [Test,toturial]
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;In this case, this post is categorized as Test and toturial on the site.&lt;/p&gt;
+&lt;p&gt;there may be more attributes that could be added in the header, you can find them &lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/variables/page/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;pre&gt;&lt;code&gt;hugo
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;to build the site locally. (converting everything into html to get ready for deployment).&lt;/p&gt;
+&lt;p&gt;To put your site into Internet, you first need a respority to store all you resources for your site. Here we choose github as such store.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;www.github.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;or if you still not have one, register &lt;a class=&#34;link&#34; href=&#34;https://github.com/join&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;figure&gt;
+		&lt;a href=&#34;https://example.com/p/steps-to-create-a-personal-site-with-hugo/new_repo.png&#34; data-size=&#34;437x242&#34;&gt;
+			&lt;img srcset=&#34;https://example.com/p/steps-to-create-a-personal-site-with-hugo/new_repo_hu3a0a69b614b41e1ceed30d50aabd815b_23498_480x0_resize_box_2.png 480w, https://example.com/p/steps-to-create-a-personal-site-with-hugo/new_repo_hu3a0a69b614b41e1ceed30d50aabd815b_23498_1024x0_resize_box_2.png 1024w&#34;
+				src=&#34;https://example.com/p/steps-to-create-a-personal-site-with-hugo/new_repo.png&#34; width=&#34;437&#34; height=&#34;242&#34; loading=&#34;lazy&#34;
+				alt=&#34;new repo&#34;&gt;
+		&lt;/a&gt;
+		
+		&lt;figcaption&gt;new repo&lt;/figcaption&gt;
+		
+	&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;Note&lt;!-- raw HTML omitted --&gt;: the name of the repo has to be the same as your accout nick name.&lt;/p&gt;
+&lt;p&gt;The format of the repo name should be:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[your username in lower case].github.io
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;For example:&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+		&lt;a href=&#34;https://example.com/p/steps-to-create-a-personal-site-with-hugo/repo_name.png&#34; data-size=&#34;627x113&#34;&gt;
+			&lt;img srcset=&#34;https://example.com/p/steps-to-create-a-personal-site-with-hugo/repo_name_hu65890d87307ca3f27ec87ab3c7493122_11839_480x0_resize_box_2.png 480w, https://example.com/p/steps-to-create-a-personal-site-with-hugo/repo_name_hu65890d87307ca3f27ec87ab3c7493122_11839_1024x0_resize_box_2.png 1024w&#34;
+				src=&#34;https://example.com/p/steps-to-create-a-personal-site-with-hugo/repo_name.png&#34; width=&#34;627&#34; height=&#34;113&#34; loading=&#34;lazy&#34;
+				alt=&#34;repo name&#34;&gt;
+		&lt;/a&gt;
+		
+		&lt;figcaption&gt;repo name&lt;/figcaption&gt;
+		
+	&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;ensure that your repo is public so that other can visit your site!&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+		&lt;a href=&#34;https://example.com/p/steps-to-create-a-personal-site-with-hugo/pub.png&#34; data-size=&#34;650x77&#34;&gt;
+			&lt;img srcset=&#34;https://example.com/p/steps-to-create-a-personal-site-with-hugo/pub_huba20939967388a84830d6ce05a91c0ec_5445_480x0_resize_box_2.png 480w, https://example.com/p/steps-to-create-a-personal-site-with-hugo/pub_huba20939967388a84830d6ce05a91c0ec_5445_1024x0_resize_box_2.png 1024w&#34;
+				src=&#34;https://example.com/p/steps-to-create-a-personal-site-with-hugo/pub.png&#34; width=&#34;650&#34; height=&#34;77&#34; loading=&#34;lazy&#34;
+				alt=&#34;pub&#34;&gt;
+		&lt;/a&gt;
+		
+		&lt;figcaption&gt;pub&lt;/figcaption&gt;
+		
+	&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;leave other as default or add anything you like in description.&lt;/p&gt;
+&lt;p&gt;Now you get a empty repo ready to store your site contents!&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;Building the site by overwriting baseUrl and theme.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;hugo --theme=hugo-theme-stack --baseUrl=&amp;quot;https://[your username].github.io&amp;quot; --buildDrafts 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;(you can ignore the &amp;ndash;buildDrafts flag if you removed draft attributes in your posts that your wish to build)&lt;/p&gt;
+&lt;p&gt;Now there would be a new folder named /public/ in your root folder.&lt;/p&gt;
+&lt;p&gt;enter the public/ folder.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cd public
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;All contents in the public/ folder are contents that hugo built for you, you then just need to upload everything in this public/ folder to the remote repo.&lt;/p&gt;
+&lt;p&gt;We use git to complete this step:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;blog/public&amp;gt;git init
+blog/public&amp;gt;git add .
+blog/public&amp;gt;git commit -m &amp;quot;initial upload&amp;quot;
+blog/public&amp;gt;git remote add origin [your repo address for your site]
+blog/public&amp;gt;git push -u origin master
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;then enter your username and password for your github account.&lt;/p&gt;
+&lt;p&gt;When the push completed, you should be able to access your personal site without much trouble!&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;You can modify the strucure of the existing theme or even create on your own! &lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/content-management/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Hugo Officical Site&lt;/a&gt; offered detailed instructions on how to customize your personal site and you can try it yourself!&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>真分数分解为埃及分数思路</title>
-        <link>https://charlesChen02.github.io/p/%E7%9C%9F%E5%88%86%E6%95%B0%E5%88%86%E8%A7%A3%E4%B8%BA%E5%9F%83%E5%8F%8A%E5%88%86%E6%95%B0%E6%80%9D%E8%B7%AF/</link>
+        <link>https://example.com/p/%E7%9C%9F%E5%88%86%E6%95%B0%E5%88%86%E8%A7%A3%E4%B8%BA%E5%9F%83%E5%8F%8A%E5%88%86%E6%95%B0%E6%80%9D%E8%B7%AF/</link>
         <pubDate>Wed, 16 Dec 2020 09:58:57 +0800</pubDate>
         
-        <guid>https://charlesChen02.github.io/p/%E7%9C%9F%E5%88%86%E6%95%B0%E5%88%86%E8%A7%A3%E4%B8%BA%E5%9F%83%E5%8F%8A%E5%88%86%E6%95%B0%E6%80%9D%E8%B7%AF/</guid>
+        <guid>https://example.com/p/%E7%9C%9F%E5%88%86%E6%95%B0%E5%88%86%E8%A7%A3%E4%B8%BA%E5%9F%83%E5%8F%8A%E5%88%86%E6%95%B0%E6%80%9D%E8%B7%AF/</guid>
         <description>&lt;p&gt;&lt;strong&gt;题目描述&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;分子为1的分数称为埃及分数。现输入一个真分数(分子比分母小的分数，叫做真分数)，请将该分数分解为埃及分数。如：8/11 = 1/2+1/5+1/55+1/110。&lt;/p&gt;
 &lt;p&gt;注：真分数指分子小于分母的分数，分子和分母有可能gcd不为1！&lt;/p&gt;

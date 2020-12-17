@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>toturial on Charles Chen</title>
+    <link>https://example.com/tags/toturial/</link>
+    <description>Recent content in toturial on Charles Chen</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 17 Dec 2020 10:55:23 +0800</lastBuildDate><atom:link href="https://example.com/tags/toturial/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Steps to create a personal site with hugo</title>
+      <link>https://example.com/p/steps-to-create-a-personal-site-with-hugo/</link>
+      <pubDate>Thu, 17 Dec 2020 10:55:23 +0800</pubDate>
+      
+      <guid>https://example.com/p/steps-to-create-a-personal-site-with-hugo/</guid>
+      <description>A personal site could do much with your interview and make you more competitive! In this paper I would share with you detailed steps for how to create a new public site using hugo, which is one of latest tools for building a site.
+Git
+Go &amp;gt; 1.11
+brew install hugo or
+port install hugo if you are using MacPorts.
+Then you can simply jump to step 2 to continue.</description>
+    </item>
+    
+  </channel>
+</rss>
