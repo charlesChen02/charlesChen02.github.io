@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='指针是能够存放一个地址的一组存储单元(通常2或4个字节).
+运算符 &amp;amp; 可以取用一个对象的地址.
+p = &amp;amp;c; 可以把c的地址赋给p. p是指向c的指针.
+地址运算符&amp;amp;只能应用于内存中的对象, 即变量(variable)与数组元素(array elements). 不能作用于表达式(expression), 常量(constant) 或register类型的变量.
+一元运算符 * 是间接寻址或间接引用运算符.当作用于指针将访问指针所指向的对象.
+int *ip 该语句表明表达式 *ip的结果是int类型. 该语法与声明变量(variable)的语法与声明该变量所在表达式的语法相似.因此, 对函数的声明也可采用这种方式.例:
+double *dp, atof(char *); 指针只能指向某种特定类型的对象. (例外: 指向void类型的指针可以存放指向任何类型的指针,但不能间接引用其自身).
+若要达成修改主函数值的目标, 可以将指向所需的变量的指针传递给被调用函数
+swap(&amp;amp;a,&amp;amp;b) swap声明中所有参数都声明为指针, 并且通过这些指针来间接访问他们所指向的值.
+void swap(int *px, int *py){ int temp; temp = *px; *px = *py; *py = temp; } int a[10]; 定义一个长度为10的数组a, a[i] 则表示该数组的第i个元素.
+声明
+int *pa; pa = &amp;amp;a[0] 则将指针pa指向数组的第0个元素. (pa的值为数组元素a[0]的地址). 这样, 赋值语句
+x = *pa; 则能把a[0]中的内容复制到x中.'><title>C程序设计语言笔记: 第五章 指针与数组</title>
+
+<link rel='canonical' href='https://example.com/p/c%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0-%E7%AC%AC%E4%BA%94%E7%AB%A0-%E6%8C%87%E9%92%88%E4%B8%8E%E6%95%B0%E7%BB%84/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='C程序设计语言笔记: 第五章 指针与数组'>
+<meta property='og:description' content='指针是能够存放一个地址的一组存储单元(通常2或4个字节).
+运算符 &amp;amp; 可以取用一个对象的地址.
+p = &amp;amp;c; 可以把c的地址赋给p. p是指向c的指针.
+地址运算符&amp;amp;只能应用于内存中的对象, 即变量(variable)与数组元素(array elements). 不能作用于表达式(expression), 常量(constant) 或register类型的变量.
+一元运算符 * 是间接寻址或间接引用运算符.当作用于指针将访问指针所指向的对象.
+int *ip 该语句表明表达式 *ip的结果是int类型. 该语法与声明变量(variable)的语法与声明该变量所在表达式的语法相似.因此, 对函数的声明也可采用这种方式.例:
+double *dp, atof(char *); 指针只能指向某种特定类型的对象. (例外: 指向void类型的指针可以存放指向任何类型的指针,但不能间接引用其自身).
+若要达成修改主函数值的目标, 可以将指向所需的变量的指针传递给被调用函数
+swap(&amp;amp;a,&amp;amp;b) swap声明中所有参数都声明为指针, 并且通过这些指针来间接访问他们所指向的值.
+void swap(int *px, int *py){ int temp; temp = *px; *px = *py; *py = temp; } int a[10]; 定义一个长度为10的数组a, a[i] 则表示该数组的第i个元素.
+声明
+int *pa; pa = &amp;amp;a[0] 则将指针pa指向数组的第0个元素. (pa的值为数组元素a[0]的地址). 这样, 赋值语句
+x = *pa; 则能把a[0]中的内容复制到x中.'>
+<meta property='og:url' content='https://example.com/p/c%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0-%E7%AC%AC%E4%BA%94%E7%AB%A0-%E6%8C%87%E9%92%88%E4%B8%8E%E6%95%B0%E7%BB%84/'>
+<meta property='og:site_name' content='Charles Chen'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2020-12-18T13:41:50&#43;08:00'/><meta property='article:modified_time' content='2020-12-18T13:41:50&#43;08:00'/>
+<meta name="twitter:title" content="C程序设计语言笔记: 第五章 指针与数组">
+<meta name="twitter:description" content="指针是能够存放一个地址的一组存储单元(通常2或4个字节).
+运算符 &amp;amp; 可以取用一个对象的地址.
+p = &amp;amp;c; 可以把c的地址赋给p. p是指向c的指针.
+地址运算符&amp;amp;只能应用于内存中的对象, 即变量(variable)与数组元素(array elements). 不能作用于表达式(expression), 常量(constant) 或register类型的变量.
+一元运算符 * 是间接寻址或间接引用运算符.当作用于指针将访问指针所指向的对象.
+int *ip 该语句表明表达式 *ip的结果是int类型. 该语法与声明变量(variable)的语法与声明该变量所在表达式的语法相似.因此, 对函数的声明也可采用这种方式.例:
+double *dp, atof(char *); 指针只能指向某种特定类型的对象. (例外: 指向void类型的指针可以存放指向任何类型的指针,但不能间接引用其自身).
+若要达成修改主函数值的目标, 可以将指向所需的变量的指针传递给被调用函数
+swap(&amp;amp;a,&amp;amp;b) swap声明中所有参数都声明为指针, 并且通过这些指针来间接访问他们所指向的值.
+void swap(int *px, int *py){ int temp; temp = *px; *px = *py; *py = temp; } int a[10]; 定义一个长度为10的数组a, a[i] 则表示该数组的第i个元素.
+声明
+int *pa; pa = &amp;amp;a[0] 则将指针pa指向数组的第0个元素. (pa的值为数组元素a[0]的地址). 这样, 赋值语句
+x = *pa; 则能把a[0]中的内容复制到x中.">
+    </head>
+    <body class="">
+        <div class="container flex on-phone--column align-items--flex-start extended article-page with-toolbar">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu111f960834a148580c6a043e19b92e3e_20144_300x0_resize_box_2.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+        
+        <h1 class="site-name"><a href="https://example.com/">Charles Chen</a></h1>
+        <h2 class="site-description">Graduated in Australian National University. Dosing Master degree in University of Melbone. Major in Artificial Intelligence, Deep Learning.</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+    </ol>
+</aside>
+
+            <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://example.com/" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            
+                <a href="/categories/notes/">notes</a>
+            
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/p/c%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0-%E7%AC%AC%E4%BA%94%E7%AB%A0-%E6%8C%87%E9%92%88%E4%B8%8E%E6%95%B0%E7%BB%84/">C程序设计语言笔记: 第五章 指针与数组</a>
+    </h2>
+
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">Dec 18, 2020</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <!-- raw HTML omitted -->
+<p>指针是能够存放一个地址的一组存储单元(通常2或4个字节).</p>
+<p>运算符 &amp; 可以取用一个对象的地址.</p>
+<pre><code>p = &amp;c;
+</code></pre><p>可以把c的地址赋给p. p是指向c的指针.</p>
+<p>地址运算符&amp;只能应用于内存中的对象, 即变量(variable)与数组元素(array elements). 不能作用于表达式(expression), 常量(constant) 或register类型的变量.</p>
+<p>一元运算符 * 是间接寻址或间接引用运算符.当作用于指针将访问指针所指向的对象.</p>
+<pre><code>int *ip
+</code></pre><p>该语句表明表达式 *ip的结果是int类型. 该语法与声明变量(variable)的语法与声明该变量所在表达式的语法相似.因此, 对函数的声明也可采用这种方式.例:</p>
+<pre><code>double *dp, atof(char *);
+</code></pre><p>指针只能指向某种特定类型的对象. (例外: 指向void类型的指针可以存放指向任何类型的指针,但不能间接引用其自身).</p>
+<!-- raw HTML omitted -->
+<p>若要达成修改主函数值的目标, 可以将指向所需的变量的指针传递给被调用函数</p>
+<pre><code>swap(&amp;a,&amp;b)
+</code></pre><p>swap声明中所有参数都声明为指针, 并且通过这些指针来间接访问他们所指向的值.</p>
+<pre><code>void swap(int *px, int *py){
+    int temp;
+    temp = *px;
+    *px = *py;
+    *py = temp;
+}
+</code></pre><!-- raw HTML omitted -->
+<pre><code>int a[10];
+</code></pre><p>定义一个长度为10的数组a, a[i] 则表示该数组的第i个元素.</p>
+<p>声明</p>
+<pre><code>int *pa;
+pa = &amp;a[0]
+</code></pre><p>则将指针pa指向数组的第0个元素. (pa的值为数组元素a[0]的地址). 这样, 赋值语句</p>
+<pre><code>x = *pa;
+</code></pre><p>则能把a[0]中的内容复制到x中.</p>
+<p>根据指针运算的定义. pa + 1将指向数组的下一个元素. pa + i 将指向 pa 所指元素之后的第 i 个元素. pa - i 将指向 pa 所指元素之前的第 i 个元素. 例: *(pa + 1) 引用的是数组元素 a[1] 的内容.</p>
+<p>执行赋值语句</p>
+<pre><code>pa = &amp;a[0]
+</code></pre><p>后, pa 和 a具有相同的值. 因为数组名所代表的就是该数组最开始的一个元素的地址.因此以上赋值语句可以写成:</p>
+<pre><code>pa = a;
+</code></pre><p>因此, 通过数组和下标实现的表达式可等价的通过指针和偏移量实现.</p>
+<p>但不同之处在于, 指针是一个变量, 因此 pa = a 和 pa++ 都是合法的, 而数组名不是变量.</p>
+<p>在函数定义中,</p>
+<pre><code>char s[]
+</code></pre><p>和</p>
+<pre><code>char *s
+</code></pre><p>是等价的.</p>
+<!-- raw HTML omitted -->
+<p>指针的初始化: 有意义的指针初始化只能是0或者是表示地址的表达式, 对后者来说, 表达式所代表的地址必须是在此之前已定义的具有适当类型的数据的地址.</p>
+<p>C语言保证, 0永远不是有效的数据地址, 因此, 返回值0可以表示发生了异常事件.</p>
+<p>指针与整数不能互相转换, 但0是唯一例外. 常量0可以赋值给指针, 指针也可以和0进行比较. 程序中常使用符号常量NULL代替常量0 (定义在标准头文件 &lt;stddef.h&gt;中).</p>
+<p>指针可以进行比较运算. 如果指针p和q指向同一数组的成员, 那么他们之间就可以进行类似的关系比较运算符. 例: 若p指向的数组元素位置在q指向的数组元素位置之前, 则表达式 p &lt; q 的值为true.</p>
+<p>指针的算数运算具有一致性: 如果处理的数据类型是比字符型占据更多存储空间的浮点型, 并且p是一个指向浮点类型的指针, 那么在执行p++后, p将指向下一个浮点数的地址.</p>
+<p>有效的指针运算包括:</p>
+<p>相同类型指针之间的赋值运算,</p>
+<p>指针同整数之间的加法或减法运算,</p>
+<p>指向相同数组中元素的两个指针之间的减法或比较运算,</p>
+<p>将指针赋值为0或指针与0之间的比较运算.</p>
+<p>其他所有形式的指针运算都是非法的.</p>
+<!-- raw HTML omitted -->
+<p>以下定义有很大的差别:</p>
+<pre><code>char amessage[] = &quot;now is the time&quot;; /*定义一个数组*/
+char *pmessage = &quot;now is the time&quot;; /*定义一个指针*/
+</code></pre><p>amessage 是一个仅仅足以存放初始化字符串以及空字符'\0' 的一维数组. 数组中单个字符可以进行修改, 但amessage始终指向同一个存储位置.</p>
+<p>另一方面, pmessage 是一个指针, 其值指向一个字符串常量.</p>
+<!-- raw HTML omitted -->
+<p>例:</p>
+<pre><code>#define MAXLINES 5000
+char *lineptr[MAXLINES]
+</code></pre><p>表示lineptr是一个具有MAXLINES个元素的一维数组, 其中数组的每一个元素是一个指向char类型对象的指针. 也就是说, lineptr[i]是一个char指针, 而*lineptr[i]是该指针指向的第i个元素.</p>
+<p>由于lineptr本身是一个数组名, 可按照前面相同的方法将其作为指针使用.</p>
+<!-- raw HTML omitted -->
+<p>如果将二维数组作为参数传递给函数, 那么在函数的参数声明中必须指明数组的列数.</p>
+<pre><code>f(int daytab[2][13]){...}
+</code></pre><p>可以写成:</p>
+<pre><code>f(int daytab[][13]){...}
+</code></pre><p>因为行数不重要, 因此还可以改写成:</p>
+<pre><code>f(int (*daytab)[13]){...}
+</code></pre><p>这种声明形式标明参数是一个指针, 它指向具有13个整型元素的一维数组. 因为方括号[]的优先级高于*, 所以需要使用圆括号.</p>
+<p>否则将变成:</p>
+<pre><code>int *daytab[13]
+</code></pre><p>表示声明一个数组, 其有13个元素, 每一个元素都是一个指向int对象的指针.</p>
+<p>一般来说, 除数组的第一维(下标)可以不指定大小, 其余各维都必须明确指定大小.</p>
+<!-- raw HTML omitted -->
+<p>略(与其他类型对象的初始化语法相似)</p>
+<!-- raw HTML omitted -->
+<p>有如下两个定义:</p>
+<pre><code>int a[10][20]
+int *b[20]
+</code></pre><p>从语法角度来说, a[3][4]和b[3][4]都是对一个int 对象的合法引用, 但a是一个真正的二维数组,分配了200个int类型长度的空间. 但是b定义仅仅分配了20个指针, 并且没有初始化, 他们的初始化必须以显式的方式进行,如static初始化或通过代码初始化.</p>
+<p>指针数组的一个重要优点在于, 数组的每一行长度可以不同.</p>
+<!-- raw HTML omitted -->
+<p>调用主函数main时, 它带有两个参数. 第一个参数(argc, 用于参数计数)的值表示运行程序时命令行中参数的数目, 第二个参数(argv, 用于参数向量)是一个指向字符串数组的指针, 其中每一个字符串对应一个参数.</p>
+<p>按照C语言约定, argv[0]是启动该程序的程序名, 因此argc的值至少为1.</p>
+<p>ANSI 要求argv[argc]的值必须为一空指针.</p>
+<!-- raw HTML omitted -->
+<p>定义qsort为:</p>
+<pre><code>void qsort(void *lineptr, int left, int right, int (*comp)(void *,void *));
+</code></pre><p>其中, 指针数组参数的类型为通用指针void *. 由于任何类型的指针都可以转换成void *类并在转换回原来的类型时不丢失信息.</p>
+<p>qsort 的第四个参数声明如下</p>
+<pre><code>int (*comp)(void *,void *)
+</code></pre><p>它表明comp是一个指向函数的指针, 该函数具有两个void * 类型的参数, 其返回值类型为int.</p>
+<!-- raw HTML omitted -->
+<p>(略)</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Charles Chen</span>
+    </section>
+    </footer>
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+</aside>
+
+
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">&copy; 2020 Charles Chen</section>
+    <section class="powerby">Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="1.1.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true" style="display:none">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+            </main>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"
+    integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=" crossorigin="anonymous"></script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<link rel="stylesheet" href="/css/highlight/light.min.css" media="(prefers-color-scheme: light)">
+<link rel="stylesheet" href="/css/highlight/dark.min.css" media="(prefers-color-scheme: dark)">
+
+    </body>
+</html>

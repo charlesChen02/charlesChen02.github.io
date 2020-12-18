@@ -6,7 +6,114 @@
         <description>Recent content on Charles Chen</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Thu, 17 Dec 2020 10:55:23 +0800</lastBuildDate><atom:link href="https://example.com/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 18 Dec 2020 13:41:50 +0800</lastBuildDate><atom:link href="https://example.com/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>C程序设计语言笔记: 第五章 指针与数组</title>
+        <link>https://example.com/p/c%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0-%E7%AC%AC%E4%BA%94%E7%AB%A0-%E6%8C%87%E9%92%88%E4%B8%8E%E6%95%B0%E7%BB%84/</link>
+        <pubDate>Fri, 18 Dec 2020 13:41:50 +0800</pubDate>
+        
+        <guid>https://example.com/p/c%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0-%E7%AC%AC%E4%BA%94%E7%AB%A0-%E6%8C%87%E9%92%88%E4%B8%8E%E6%95%B0%E7%BB%84/</guid>
+        <description>&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;指针是能够存放一个地址的一组存储单元(通常2或4个字节).&lt;/p&gt;
+&lt;p&gt;运算符 &amp;amp; 可以取用一个对象的地址.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;p = &amp;amp;c;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;可以把c的地址赋给p. p是指向c的指针.&lt;/p&gt;
+&lt;p&gt;地址运算符&amp;amp;只能应用于内存中的对象, 即变量(variable)与数组元素(array elements). 不能作用于表达式(expression), 常量(constant) 或register类型的变量.&lt;/p&gt;
+&lt;p&gt;一元运算符 * 是间接寻址或间接引用运算符.当作用于指针将访问指针所指向的对象.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;int *ip
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;该语句表明表达式 *ip的结果是int类型. 该语法与声明变量(variable)的语法与声明该变量所在表达式的语法相似.因此, 对函数的声明也可采用这种方式.例:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;double *dp, atof(char *);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;指针只能指向某种特定类型的对象. (例外: 指向void类型的指针可以存放指向任何类型的指针,但不能间接引用其自身).&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;若要达成修改主函数值的目标, 可以将指向所需的变量的指针传递给被调用函数&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;swap(&amp;amp;a,&amp;amp;b)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;swap声明中所有参数都声明为指针, 并且通过这些指针来间接访问他们所指向的值.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;void swap(int *px, int *py){
+    int temp;
+    temp = *px;
+    *px = *py;
+    *py = temp;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;pre&gt;&lt;code&gt;int a[10];
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;定义一个长度为10的数组a, a[i] 则表示该数组的第i个元素.&lt;/p&gt;
+&lt;p&gt;声明&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;int *pa;
+pa = &amp;amp;a[0]
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;则将指针pa指向数组的第0个元素. (pa的值为数组元素a[0]的地址). 这样, 赋值语句&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;x = *pa;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;则能把a[0]中的内容复制到x中.&lt;/p&gt;
+&lt;p&gt;根据指针运算的定义. pa + 1将指向数组的下一个元素. pa + i 将指向 pa 所指元素之后的第 i 个元素. pa - i 将指向 pa 所指元素之前的第 i 个元素. 例: *(pa + 1) 引用的是数组元素 a[1] 的内容.&lt;/p&gt;
+&lt;p&gt;执行赋值语句&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;pa = &amp;amp;a[0]
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;后, pa 和 a具有相同的值. 因为数组名所代表的就是该数组最开始的一个元素的地址.因此以上赋值语句可以写成:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;pa = a;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;因此, 通过数组和下标实现的表达式可等价的通过指针和偏移量实现.&lt;/p&gt;
+&lt;p&gt;但不同之处在于, 指针是一个变量, 因此 pa = a 和 pa++ 都是合法的, 而数组名不是变量.&lt;/p&gt;
+&lt;p&gt;在函数定义中,&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;char s[]
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;和&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;char *s
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;是等价的.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;指针的初始化: 有意义的指针初始化只能是0或者是表示地址的表达式, 对后者来说, 表达式所代表的地址必须是在此之前已定义的具有适当类型的数据的地址.&lt;/p&gt;
+&lt;p&gt;C语言保证, 0永远不是有效的数据地址, 因此, 返回值0可以表示发生了异常事件.&lt;/p&gt;
+&lt;p&gt;指针与整数不能互相转换, 但0是唯一例外. 常量0可以赋值给指针, 指针也可以和0进行比较. 程序中常使用符号常量NULL代替常量0 (定义在标准头文件 &amp;lt;stddef.h&amp;gt;中).&lt;/p&gt;
+&lt;p&gt;指针可以进行比较运算. 如果指针p和q指向同一数组的成员, 那么他们之间就可以进行类似的关系比较运算符. 例: 若p指向的数组元素位置在q指向的数组元素位置之前, 则表达式 p &amp;lt; q 的值为true.&lt;/p&gt;
+&lt;p&gt;指针的算数运算具有一致性: 如果处理的数据类型是比字符型占据更多存储空间的浮点型, 并且p是一个指向浮点类型的指针, 那么在执行p++后, p将指向下一个浮点数的地址.&lt;/p&gt;
+&lt;p&gt;有效的指针运算包括:&lt;/p&gt;
+&lt;p&gt;相同类型指针之间的赋值运算,&lt;/p&gt;
+&lt;p&gt;指针同整数之间的加法或减法运算,&lt;/p&gt;
+&lt;p&gt;指向相同数组中元素的两个指针之间的减法或比较运算,&lt;/p&gt;
+&lt;p&gt;将指针赋值为0或指针与0之间的比较运算.&lt;/p&gt;
+&lt;p&gt;其他所有形式的指针运算都是非法的.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;以下定义有很大的差别:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;char amessage[] = &amp;quot;now is the time&amp;quot;; /*定义一个数组*/
+char *pmessage = &amp;quot;now is the time&amp;quot;; /*定义一个指针*/
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;amessage 是一个仅仅足以存放初始化字符串以及空字符&#39;\0&#39; 的一维数组. 数组中单个字符可以进行修改, 但amessage始终指向同一个存储位置.&lt;/p&gt;
+&lt;p&gt;另一方面, pmessage 是一个指针, 其值指向一个字符串常量.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;例:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#define MAXLINES 5000
+char *lineptr[MAXLINES]
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;表示lineptr是一个具有MAXLINES个元素的一维数组, 其中数组的每一个元素是一个指向char类型对象的指针. 也就是说, lineptr[i]是一个char指针, 而*lineptr[i]是该指针指向的第i个元素.&lt;/p&gt;
+&lt;p&gt;由于lineptr本身是一个数组名, 可按照前面相同的方法将其作为指针使用.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;如果将二维数组作为参数传递给函数, 那么在函数的参数声明中必须指明数组的列数.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;f(int daytab[2][13]){...}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;可以写成:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;f(int daytab[][13]){...}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;因为行数不重要, 因此还可以改写成:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;f(int (*daytab)[13]){...}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这种声明形式标明参数是一个指针, 它指向具有13个整型元素的一维数组. 因为方括号[]的优先级高于*, 所以需要使用圆括号.&lt;/p&gt;
+&lt;p&gt;否则将变成:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;int *daytab[13]
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;表示声明一个数组, 其有13个元素, 每一个元素都是一个指向int对象的指针.&lt;/p&gt;
+&lt;p&gt;一般来说, 除数组的第一维(下标)可以不指定大小, 其余各维都必须明确指定大小.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;略(与其他类型对象的初始化语法相似)&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;有如下两个定义:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;int a[10][20]
+int *b[20]
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;从语法角度来说, a[3][4]和b[3][4]都是对一个int 对象的合法引用, 但a是一个真正的二维数组,分配了200个int类型长度的空间. 但是b定义仅仅分配了20个指针, 并且没有初始化, 他们的初始化必须以显式的方式进行,如static初始化或通过代码初始化.&lt;/p&gt;
+&lt;p&gt;指针数组的一个重要优点在于, 数组的每一行长度可以不同.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;调用主函数main时, 它带有两个参数. 第一个参数(argc, 用于参数计数)的值表示运行程序时命令行中参数的数目, 第二个参数(argv, 用于参数向量)是一个指向字符串数组的指针, 其中每一个字符串对应一个参数.&lt;/p&gt;
+&lt;p&gt;按照C语言约定, argv[0]是启动该程序的程序名, 因此argc的值至少为1.&lt;/p&gt;
+&lt;p&gt;ANSI 要求argv[argc]的值必须为一空指针.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;定义qsort为:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;void qsort(void *lineptr, int left, int right, int (*comp)(void *,void *));
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;其中, 指针数组参数的类型为通用指针void *. 由于任何类型的指针都可以转换成void *类并在转换回原来的类型时不丢失信息.&lt;/p&gt;
+&lt;p&gt;qsort 的第四个参数声明如下&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;int (*comp)(void *,void *)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;它表明comp是一个指向函数的指针, 该函数具有两个void * 类型的参数, 其返回值类型为int.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;(略)&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>Steps to create a personal site with hugo</title>
         <link>https://example.com/p/steps-to-create-a-personal-site-with-hugo/</link>
         <pubDate>Thu, 17 Dec 2020 10:55:23 +0800</pubDate>
