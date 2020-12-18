@@ -1,53 +1,62 @@
 <!DOCTYPE html>
 <html lang="en-us">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='指针是能够存放一个地址的一组存储单元(通常2或4个字节).
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='第五章: 指针与数组 指针是一种保存变量地址的变量.
+5.1 指针与地址
+机器的一个字节可以存放一个char类型的数据, 两个相邻的字节存储单元可以存储一个short类型的数据, 而四个相邻的存储单元可以存储一个long型的数据.
+指针是能够存放一个地址的一组存储单元(通常2或4个字节).
 运算符 &amp;amp; 可以取用一个对象的地址.
 p = &amp;amp;c; 可以把c的地址赋给p. p是指向c的指针.
 地址运算符&amp;amp;只能应用于内存中的对象, 即变量(variable)与数组元素(array elements). 不能作用于表达式(expression), 常量(constant) 或register类型的变量.
 一元运算符 * 是间接寻址或间接引用运算符.当作用于指针将访问指针所指向的对象.
 int *ip 该语句表明表达式 *ip的结果是int类型. 该语法与声明变量(variable)的语法与声明该变量所在表达式的语法相似.因此, 对函数的声明也可采用这种方式.例:
 double *dp, atof(char *); 指针只能指向某种特定类型的对象. (例外: 指向void类型的指针可以存放指向任何类型的指针,但不能间接引用其自身).
+5.2 指针与函数参数
+C语言使用传值(pass by value)的方式将参数值传给被调用函数, 所以被调用函数不能直接修改主函数中变量的值.
 若要达成修改主函数值的目标, 可以将指向所需的变量的指针传递给被调用函数
 swap(&amp;amp;a,&amp;amp;b) swap声明中所有参数都声明为指针, 并且通过这些指针来间接访问他们所指向的值.
-void swap(int *px, int *py){ int temp; temp = *px; *px = *py; *py = temp; } int a[10]; 定义一个长度为10的数组a, a[i] 则表示该数组的第i个元素.
-声明
-int *pa; pa = &amp;amp;a[0] 则将指针pa指向数组的第0个元素. (pa的值为数组元素a[0]的地址). 这样, 赋值语句
-x = *pa; 则能把a[0]中的内容复制到x中.'><title>C程序设计语言笔记: 第五章 指针与数组</title>
+void swap(int *px, int *py){ int temp; temp = *px; *px = *py; *py = temp; } 5.3 指针与数组
+声明'><title>C程序设计语言笔记: 第五章 指针与数组</title>
 
 <link rel='canonical' href='https://example.com/p/c%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0-%E7%AC%AC%E4%BA%94%E7%AB%A0-%E6%8C%87%E9%92%88%E4%B8%8E%E6%95%B0%E7%BB%84/'>
 
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='C程序设计语言笔记: 第五章 指针与数组'>
-<meta property='og:description' content='指针是能够存放一个地址的一组存储单元(通常2或4个字节).
+<meta property='og:description' content='第五章: 指针与数组 指针是一种保存变量地址的变量.
+5.1 指针与地址
+机器的一个字节可以存放一个char类型的数据, 两个相邻的字节存储单元可以存储一个short类型的数据, 而四个相邻的存储单元可以存储一个long型的数据.
+指针是能够存放一个地址的一组存储单元(通常2或4个字节).
 运算符 &amp;amp; 可以取用一个对象的地址.
 p = &amp;amp;c; 可以把c的地址赋给p. p是指向c的指针.
 地址运算符&amp;amp;只能应用于内存中的对象, 即变量(variable)与数组元素(array elements). 不能作用于表达式(expression), 常量(constant) 或register类型的变量.
 一元运算符 * 是间接寻址或间接引用运算符.当作用于指针将访问指针所指向的对象.
 int *ip 该语句表明表达式 *ip的结果是int类型. 该语法与声明变量(variable)的语法与声明该变量所在表达式的语法相似.因此, 对函数的声明也可采用这种方式.例:
 double *dp, atof(char *); 指针只能指向某种特定类型的对象. (例外: 指向void类型的指针可以存放指向任何类型的指针,但不能间接引用其自身).
+5.2 指针与函数参数
+C语言使用传值(pass by value)的方式将参数值传给被调用函数, 所以被调用函数不能直接修改主函数中变量的值.
 若要达成修改主函数值的目标, 可以将指向所需的变量的指针传递给被调用函数
 swap(&amp;amp;a,&amp;amp;b) swap声明中所有参数都声明为指针, 并且通过这些指针来间接访问他们所指向的值.
-void swap(int *px, int *py){ int temp; temp = *px; *px = *py; *py = temp; } int a[10]; 定义一个长度为10的数组a, a[i] 则表示该数组的第i个元素.
-声明
-int *pa; pa = &amp;amp;a[0] 则将指针pa指向数组的第0个元素. (pa的值为数组元素a[0]的地址). 这样, 赋值语句
-x = *pa; 则能把a[0]中的内容复制到x中.'>
+void swap(int *px, int *py){ int temp; temp = *px; *px = *py; *py = temp; } 5.3 指针与数组
+声明'>
 <meta property='og:url' content='https://example.com/p/c%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0-%E7%AC%AC%E4%BA%94%E7%AB%A0-%E6%8C%87%E9%92%88%E4%B8%8E%E6%95%B0%E7%BB%84/'>
 <meta property='og:site_name' content='Charles Chen'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2020-12-18T13:41:50&#43;08:00'/><meta property='article:modified_time' content='2020-12-18T13:41:50&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='notes' /><meta property='article:tag' content='C' /><meta property='article:published_time' content='2020-12-18T13:41:50&#43;08:00'/><meta property='article:modified_time' content='2020-12-18T13:41:50&#43;08:00'/>
 <meta name="twitter:title" content="C程序设计语言笔记: 第五章 指针与数组">
-<meta name="twitter:description" content="指针是能够存放一个地址的一组存储单元(通常2或4个字节).
+<meta name="twitter:description" content="第五章: 指针与数组 指针是一种保存变量地址的变量.
+5.1 指针与地址
+机器的一个字节可以存放一个char类型的数据, 两个相邻的字节存储单元可以存储一个short类型的数据, 而四个相邻的存储单元可以存储一个long型的数据.
+指针是能够存放一个地址的一组存储单元(通常2或4个字节).
 运算符 &amp;amp; 可以取用一个对象的地址.
 p = &amp;amp;c; 可以把c的地址赋给p. p是指向c的指针.
 地址运算符&amp;amp;只能应用于内存中的对象, 即变量(variable)与数组元素(array elements). 不能作用于表达式(expression), 常量(constant) 或register类型的变量.
 一元运算符 * 是间接寻址或间接引用运算符.当作用于指针将访问指针所指向的对象.
 int *ip 该语句表明表达式 *ip的结果是int类型. 该语法与声明变量(variable)的语法与声明该变量所在表达式的语法相似.因此, 对函数的声明也可采用这种方式.例:
 double *dp, atof(char *); 指针只能指向某种特定类型的对象. (例外: 指向void类型的指针可以存放指向任何类型的指针,但不能间接引用其自身).
+5.2 指针与函数参数
+C语言使用传值(pass by value)的方式将参数值传给被调用函数, 所以被调用函数不能直接修改主函数中变量的值.
 若要达成修改主函数值的目标, 可以将指向所需的变量的指针传递给被调用函数
 swap(&amp;amp;a,&amp;amp;b) swap声明中所有参数都声明为指针, 并且通过这些指针来间接访问他们所指向的值.
-void swap(int *px, int *py){ int temp; temp = *px; *px = *py; *py = temp; } int a[10]; 定义一个长度为10的数组a, a[i] 则表示该数组的第i个元素.
-声明
-int *pa; pa = &amp;amp;a[0] 则将指针pa指向数组的第0个元素. (pa的值为数组元素a[0]的地址). 这样, 赋值语句
-x = *pa; 则能把a[0]中的内容复制到x中.">
+void swap(int *px, int *py){ int temp; temp = *px; *px = *py; *py = temp; } 5.3 指针与数组
+声明">
     </head>
     <body class="">
         <div class="container flex on-phone--column align-items--flex-start extended article-page with-toolbar">
@@ -206,49 +215,54 @@ x = *pa; 则能把a[0]中的内容复制到x中.">
 </header>
 
     <section class="article-content">
-    <!-- raw HTML omitted -->
+    <h2 id="第五章-指针与数组">第五章: 指针与数组</h2>
+<p>指针是一种保存变量地址的变量.</p>
+<p><strong>5.1 指针与地址</strong></p>
+<p>机器的一个字节可以存放一个char类型的数据, 两个相邻的字节存储单元可以存储一个short类型的数据, 而四个相邻的存储单元可以存储一个long型的数据.</p>
 <p>指针是能够存放一个地址的一组存储单元(通常2或4个字节).</p>
 <p>运算符 &amp; 可以取用一个对象的地址.</p>
-<pre><code>p = &amp;c;
-</code></pre><p>可以把c的地址赋给p. p是指向c的指针.</p>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="n">p</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">c</span><span class="p">;</span>
+</code></pre></div><p>可以把c的地址赋给p. p是指向c的指针.</p>
 <p>地址运算符&amp;只能应用于内存中的对象, 即变量(variable)与数组元素(array elements). 不能作用于表达式(expression), 常量(constant) 或register类型的变量.</p>
 <p>一元运算符 * 是间接寻址或间接引用运算符.当作用于指针将访问指针所指向的对象.</p>
-<pre><code>int *ip
-</code></pre><p>该语句表明表达式 *ip的结果是int类型. 该语法与声明变量(variable)的语法与声明该变量所在表达式的语法相似.因此, 对函数的声明也可采用这种方式.例:</p>
-<pre><code>double *dp, atof(char *);
-</code></pre><p>指针只能指向某种特定类型的对象. (例外: 指向void类型的指针可以存放指向任何类型的指针,但不能间接引用其自身).</p>
-<!-- raw HTML omitted -->
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="kt">int</span> <span class="o">*</span><span class="n">ip</span>
+</code></pre></div><p>该语句表明表达式 *ip的结果是int类型. 该语法与声明变量(variable)的语法与声明该变量所在表达式的语法相似.因此, 对函数的声明也可采用这种方式.例:</p>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="kt">double</span> <span class="o">*</span><span class="n">dp</span><span class="p">,</span> <span class="n">atof</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">);</span>
+</code></pre></div><p>指针只能指向某种特定类型的对象. (例外: 指向void类型的指针可以存放指向任何类型的指针,但不能间接引用其自身).</p>
+<p><strong>5.2 指针与函数参数</strong></p>
+<p>C语言使用传值(pass by value)的方式将参数值传给被调用函数, 所以被调用函数不能直接修改主函数中变量的值.</p>
 <p>若要达成修改主函数值的目标, 可以将指向所需的变量的指针传递给被调用函数</p>
-<pre><code>swap(&amp;a,&amp;b)
-</code></pre><p>swap声明中所有参数都声明为指针, 并且通过这些指针来间接访问他们所指向的值.</p>
-<pre><code>void swap(int *px, int *py){
-    int temp;
-    temp = *px;
-    *px = *py;
-    *py = temp;
-}
-</code></pre><!-- raw HTML omitted -->
-<pre><code>int a[10];
-</code></pre><p>定义一个长度为10的数组a, a[i] 则表示该数组的第i个元素.</p>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="n">swap</span><span class="p">(</span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="o">&amp;</span><span class="n">b</span><span class="p">)</span>
+</code></pre></div><p>swap声明中所有参数都声明为指针, 并且通过这些指针来间接访问他们所指向的值.</p>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="kt">void</span> <span class="nf">swap</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">px</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">py</span><span class="p">){</span>
+    <span class="kt">int</span> <span class="n">temp</span><span class="p">;</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="o">*</span><span class="n">px</span><span class="p">;</span>
+    <span class="o">*</span><span class="n">px</span> <span class="o">=</span> <span class="o">*</span><span class="n">py</span><span class="p">;</span>
+    <span class="o">*</span><span class="n">py</span> <span class="o">=</span> <span class="n">temp</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><p><strong>5.3 指针与数组</strong></p>
 <p>声明</p>
-<pre><code>int *pa;
-pa = &amp;a[0]
-</code></pre><p>则将指针pa指向数组的第0个元素. (pa的值为数组元素a[0]的地址). 这样, 赋值语句</p>
-<pre><code>x = *pa;
-</code></pre><p>则能把a[0]中的内容复制到x中.</p>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+</code></pre></div><p>定义一个长度为10的数组a, a[i] 则表示该数组的第i个元素.</p>
+<p>声明</p>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="kt">int</span> <span class="o">*</span><span class="n">pa</span><span class="p">;</span>
+<span class="n">pa</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</code></pre></div><p>则将指针pa指向数组的第0个元素. (pa的值为数组元素a[0]的地址). 这样, 赋值语句</p>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="n">x</span> <span class="o">=</span> <span class="o">*</span><span class="n">pa</span><span class="p">;</span>
+</code></pre></div><p>则能把a[0]中的内容复制到x中.</p>
 <p>根据指针运算的定义. pa + 1将指向数组的下一个元素. pa + i 将指向 pa 所指元素之后的第 i 个元素. pa - i 将指向 pa 所指元素之前的第 i 个元素. 例: *(pa + 1) 引用的是数组元素 a[1] 的内容.</p>
 <p>执行赋值语句</p>
-<pre><code>pa = &amp;a[0]
-</code></pre><p>后, pa 和 a具有相同的值. 因为数组名所代表的就是该数组最开始的一个元素的地址.因此以上赋值语句可以写成:</p>
-<pre><code>pa = a;
-</code></pre><p>因此, 通过数组和下标实现的表达式可等价的通过指针和偏移量实现.</p>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="n">pa</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</code></pre></div><p>后, pa 和 a具有相同的值. 因为数组名所代表的就是该数组最开始的一个元素的地址.因此以上赋值语句可以写成:</p>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="n">pa</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span>
+</code></pre></div><p>因此, 通过数组和下标实现的表达式可等价的通过指针和偏移量实现.</p>
 <p>但不同之处在于, 指针是一个变量, 因此 pa = a 和 pa++ 都是合法的, 而数组名不是变量.</p>
 <p>在函数定义中,</p>
-<pre><code>char s[]
-</code></pre><p>和</p>
-<pre><code>char *s
-</code></pre><p>是等价的.</p>
-<!-- raw HTML omitted -->
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="kt">char</span> <span class="n">s</span><span class="p">[]</span>
+</code></pre></div><p>和</p>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="kt">char</span> <span class="o">*</span><span class="n">s</span>
+</code></pre></div><p>是等价的.</p>
+<p><strong>5.4 地址算数运算</strong></p>
 <p>指针的初始化: 有意义的指针初始化只能是0或者是表示地址的表达式, 对后者来说, 表达式所代表的地址必须是在此之前已定义的具有适当类型的数据的地址.</p>
 <p>C语言保证, 0永远不是有效的数据地址, 因此, 返回值0可以表示发生了异常事件.</p>
 <p>指针与整数不能互相转换, 但0是唯一例外. 常量0可以赋值给指针, 指针也可以和0进行比较. 程序中常使用符号常量NULL代替常量0 (定义在标准头文件 &lt;stddef.h&gt;中).</p>
@@ -260,50 +274,50 @@ pa = &amp;a[0]
 <p>指向相同数组中元素的两个指针之间的减法或比较运算,</p>
 <p>将指针赋值为0或指针与0之间的比较运算.</p>
 <p>其他所有形式的指针运算都是非法的.</p>
-<!-- raw HTML omitted -->
+<p><strong>5.5 字符指针与函数</strong></p>
 <p>以下定义有很大的差别:</p>
-<pre><code>char amessage[] = &quot;now is the time&quot;; /*定义一个数组*/
-char *pmessage = &quot;now is the time&quot;; /*定义一个指针*/
-</code></pre><p>amessage 是一个仅仅足以存放初始化字符串以及空字符'\0' 的一维数组. 数组中单个字符可以进行修改, 但amessage始终指向同一个存储位置.</p>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="kt">char</span> <span class="n">amessage</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&#34;now is the time&#34;</span><span class="p">;</span> <span class="cm">/*定义一个数组*/</span>
+<span class="kt">char</span> <span class="o">*</span><span class="n">pmessage</span> <span class="o">=</span> <span class="s">&#34;now is the time&#34;</span><span class="p">;</span> <span class="cm">/*定义一个指针*/</span>
+</code></pre></div><p>amessage 是一个仅仅足以存放初始化字符串以及空字符'\0' 的一维数组. 数组中单个字符可以进行修改, 但amessage始终指向同一个存储位置.</p>
 <p>另一方面, pmessage 是一个指针, 其值指向一个字符串常量.</p>
-<!-- raw HTML omitted -->
+<p><strong>5.6 指针数组以及指向指针的指针</strong></p>
 <p>例:</p>
-<pre><code>#define MAXLINES 5000
-char *lineptr[MAXLINES]
-</code></pre><p>表示lineptr是一个具有MAXLINES个元素的一维数组, 其中数组的每一个元素是一个指向char类型对象的指针. 也就是说, lineptr[i]是一个char指针, 而*lineptr[i]是该指针指向的第i个元素.</p>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="cp">#define MAXLINES 5000
+</span><span class="cp"></span><span class="kt">char</span> <span class="o">*</span><span class="n">lineptr</span><span class="p">[</span><span class="n">MAXLINES</span><span class="p">]</span>
+</code></pre></div><p>表示lineptr是一个具有MAXLINES个元素的一维数组, 其中数组的每一个元素是一个指向char类型对象的指针. 也就是说, lineptr[i]是一个char指针, 而*lineptr[i]是该指针指向的第i个元素.</p>
 <p>由于lineptr本身是一个数组名, 可按照前面相同的方法将其作为指针使用.</p>
-<!-- raw HTML omitted -->
+<p><strong>5.7 多维数组</strong></p>
 <p>如果将二维数组作为参数传递给函数, 那么在函数的参数声明中必须指明数组的列数.</p>
-<pre><code>f(int daytab[2][13]){...}
-</code></pre><p>可以写成:</p>
-<pre><code>f(int daytab[][13]){...}
-</code></pre><p>因为行数不重要, 因此还可以改写成:</p>
-<pre><code>f(int (*daytab)[13]){...}
-</code></pre><p>这种声明形式标明参数是一个指针, 它指向具有13个整型元素的一维数组. 因为方括号[]的优先级高于*, 所以需要使用圆括号.</p>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="n">f</span><span class="p">(</span><span class="kt">int</span> <span class="n">daytab</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">13</span><span class="p">]){...}</span>
+</code></pre></div><p>可以写成:</p>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="n">f</span><span class="p">(</span><span class="kt">int</span> <span class="n">daytab</span><span class="p">[][</span><span class="mi">13</span><span class="p">]){...}</span>
+</code></pre></div><p>因为行数不重要, 因此还可以改写成:</p>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="n">f</span><span class="p">(</span><span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">daytab</span><span class="p">)[</span><span class="mi">13</span><span class="p">]){...}</span>
+</code></pre></div><p>这种声明形式标明参数是一个指针, 它指向具有13个整型元素的一维数组. 因为方括号[]的优先级高于*, 所以需要使用圆括号.</p>
 <p>否则将变成:</p>
-<pre><code>int *daytab[13]
-</code></pre><p>表示声明一个数组, 其有13个元素, 每一个元素都是一个指向int对象的指针.</p>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="kt">int</span> <span class="o">*</span><span class="n">daytab</span><span class="p">[</span><span class="mi">13</span><span class="p">]</span>
+</code></pre></div><p>表示声明一个数组, 其有13个元素, 每一个元素都是一个指向int对象的指针.</p>
 <p>一般来说, 除数组的第一维(下标)可以不指定大小, 其余各维都必须明确指定大小.</p>
-<!-- raw HTML omitted -->
+<p><strong>5.8 指针数组的初始化</strong></p>
 <p>略(与其他类型对象的初始化语法相似)</p>
-<!-- raw HTML omitted -->
+<p><strong>5.9 指针与多维数组</strong></p>
 <p>有如下两个定义:</p>
-<pre><code>int a[10][20]
-int *b[20]
-</code></pre><p>从语法角度来说, a[3][4]和b[3][4]都是对一个int 对象的合法引用, 但a是一个真正的二维数组,分配了200个int类型长度的空间. 但是b定义仅仅分配了20个指针, 并且没有初始化, 他们的初始化必须以显式的方式进行,如static初始化或通过代码初始化.</p>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="mi">10</span><span class="p">][</span><span class="mi">20</span><span class="p">]</span>
+<span class="kt">int</span> <span class="o">*</span><span class="n">b</span><span class="p">[</span><span class="mi">20</span><span class="p">]</span>
+</code></pre></div><p>从语法角度来说, a[3][4]和b[3][4]都是对一个int 对象的合法引用, 但a是一个真正的二维数组,分配了200个int类型长度的空间. 但是b定义仅仅分配了20个指针, 并且没有初始化, 他们的初始化必须以显式的方式进行,如static初始化或通过代码初始化.</p>
 <p>指针数组的一个重要优点在于, 数组的每一行长度可以不同.</p>
-<!-- raw HTML omitted -->
+<p><strong>5.9 命令行参数</strong></p>
 <p>调用主函数main时, 它带有两个参数. 第一个参数(argc, 用于参数计数)的值表示运行程序时命令行中参数的数目, 第二个参数(argv, 用于参数向量)是一个指向字符串数组的指针, 其中每一个字符串对应一个参数.</p>
 <p>按照C语言约定, argv[0]是启动该程序的程序名, 因此argc的值至少为1.</p>
 <p>ANSI 要求argv[argc]的值必须为一空指针.</p>
-<!-- raw HTML omitted -->
+<p><strong>5.11 指向函数的指针</strong></p>
 <p>定义qsort为:</p>
-<pre><code>void qsort(void *lineptr, int left, int right, int (*comp)(void *,void *));
-</code></pre><p>其中, 指针数组参数的类型为通用指针void *. 由于任何类型的指针都可以转换成void *类并在转换回原来的类型时不丢失信息.</p>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="kt">void</span> <span class="nf">qsort</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">lineptr</span><span class="p">,</span> <span class="kt">int</span> <span class="n">left</span><span class="p">,</span> <span class="kt">int</span> <span class="n">right</span><span class="p">,</span> <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">comp</span><span class="p">)(</span><span class="kt">void</span> <span class="o">*</span><span class="p">,</span><span class="kt">void</span> <span class="o">*</span><span class="p">));</span>
+</code></pre></div><p>其中, 指针数组参数的类型为通用指针void *. 由于任何类型的指针都可以转换成void *类并在转换回原来的类型时不丢失信息.</p>
 <p>qsort 的第四个参数声明如下</p>
-<pre><code>int (*comp)(void *,void *)
-</code></pre><p>它表明comp是一个指向函数的指针, 该函数具有两个void * 类型的参数, 其返回值类型为int.</p>
-<!-- raw HTML omitted -->
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">comp</span><span class="p">)(</span><span class="kt">void</span> <span class="o">*</span><span class="p">,</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span>
+</code></pre></div><p>它表明comp是一个指向函数的指针, 该函数具有两个void * 类型的参数, 其返回值类型为int.</p>
+<p><strong>5.12 复杂声明</strong></p>
 <p>(略)</p>
 
 </section>
@@ -311,6 +325,14 @@ int *b[20]
 
     <footer class="article-footer">
     
+    <section class="article-tags">
+        
+            <a href="/tags/notes/">notes</a>
+        
+            <a href="/tags/c/">C</a>
+        
+    </section>
+
 
     
     <section class="article-copyright">

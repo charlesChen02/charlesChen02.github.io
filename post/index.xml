@@ -13,19 +13,22 @@
       <pubDate>Fri, 18 Dec 2020 13:41:50 +0800</pubDate>
       
       <guid>https://example.com/p/c%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0-%E7%AC%AC%E4%BA%94%E7%AB%A0-%E6%8C%87%E9%92%88%E4%B8%8E%E6%95%B0%E7%BB%84/</guid>
-      <description>指针是能够存放一个地址的一组存储单元(通常2或4个字节).
+      <description>第五章: 指针与数组 指针是一种保存变量地址的变量.
+5.1 指针与地址
+机器的一个字节可以存放一个char类型的数据, 两个相邻的字节存储单元可以存储一个short类型的数据, 而四个相邻的存储单元可以存储一个long型的数据.
+指针是能够存放一个地址的一组存储单元(通常2或4个字节).
 运算符 &amp;amp; 可以取用一个对象的地址.
 p = &amp;amp;c; 可以把c的地址赋给p. p是指向c的指针.
 地址运算符&amp;amp;只能应用于内存中的对象, 即变量(variable)与数组元素(array elements). 不能作用于表达式(expression), 常量(constant) 或register类型的变量.
 一元运算符 * 是间接寻址或间接引用运算符.当作用于指针将访问指针所指向的对象.
 int *ip 该语句表明表达式 *ip的结果是int类型. 该语法与声明变量(variable)的语法与声明该变量所在表达式的语法相似.因此, 对函数的声明也可采用这种方式.例:
 double *dp, atof(char *); 指针只能指向某种特定类型的对象. (例外: 指向void类型的指针可以存放指向任何类型的指针,但不能间接引用其自身).
+5.2 指针与函数参数
+C语言使用传值(pass by value)的方式将参数值传给被调用函数, 所以被调用函数不能直接修改主函数中变量的值.
 若要达成修改主函数值的目标, 可以将指向所需的变量的指针传递给被调用函数
 swap(&amp;amp;a,&amp;amp;b) swap声明中所有参数都声明为指针, 并且通过这些指针来间接访问他们所指向的值.
-void swap(int *px, int *py){ int temp; temp = *px; *px = *py; *py = temp; } int a[10]; 定义一个长度为10的数组a, a[i] 则表示该数组的第i个元素.
-声明
-int *pa; pa = &amp;amp;a[0] 则将指针pa指向数组的第0个元素. (pa的值为数组元素a[0]的地址). 这样, 赋值语句
-x = *pa; 则能把a[0]中的内容复制到x中.</description>
+void swap(int *px, int *py){ int temp; temp = *px; *px = *py; *py = temp; } 5.3 指针与数组
+声明</description>
     </item>
     
     <item>
@@ -35,11 +38,10 @@ x = *pa; 则能把a[0]中的内容复制到x中.</description>
       
       <guid>https://example.com/p/steps-to-create-a-personal-site-with-hugo/</guid>
       <description>A personal site could do much with your interview and make you more competitive! In this paper I would share with you detailed steps for how to create a new public site using hugo, which is one of latest tools for building a site.
+Getting started Prerequisite Tools check if your computer have installed those tools when you are encounter issues in the process.
 Git
 Go &amp;gt; 1.11
-brew install hugo or
-port install hugo if you are using MacPorts.
-Then you can simply jump to step 2 to continue.</description>
+Step 1: Install Hugo Mac: If you are using mac, you can make use of brew package by typing the following command in terminal:</description>
     </item>
     
     <item>

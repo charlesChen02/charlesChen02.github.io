@@ -12,49 +12,54 @@
         <pubDate>Fri, 18 Dec 2020 13:41:50 +0800</pubDate>
         
         <guid>https://example.com/p/c%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0-%E7%AC%AC%E4%BA%94%E7%AB%A0-%E6%8C%87%E9%92%88%E4%B8%8E%E6%95%B0%E7%BB%84/</guid>
-        <description>&lt;!-- raw HTML omitted --&gt;
+        <description>&lt;h2 id=&#34;第五章-指针与数组&#34;&gt;第五章: 指针与数组&lt;/h2&gt;
+&lt;p&gt;指针是一种保存变量地址的变量.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;5.1 指针与地址&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;机器的一个字节可以存放一个char类型的数据, 两个相邻的字节存储单元可以存储一个short类型的数据, 而四个相邻的存储单元可以存储一个long型的数据.&lt;/p&gt;
 &lt;p&gt;指针是能够存放一个地址的一组存储单元(通常2或4个字节).&lt;/p&gt;
 &lt;p&gt;运算符 &amp;amp; 可以取用一个对象的地址.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;p = &amp;amp;c;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;可以把c的地址赋给p. p是指向c的指针.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;可以把c的地址赋给p. p是指向c的指针.&lt;/p&gt;
 &lt;p&gt;地址运算符&amp;amp;只能应用于内存中的对象, 即变量(variable)与数组元素(array elements). 不能作用于表达式(expression), 常量(constant) 或register类型的变量.&lt;/p&gt;
 &lt;p&gt;一元运算符 * 是间接寻址或间接引用运算符.当作用于指针将访问指针所指向的对象.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;int *ip
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;该语句表明表达式 *ip的结果是int类型. 该语法与声明变量(variable)的语法与声明该变量所在表达式的语法相似.因此, 对函数的声明也可采用这种方式.例:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;double *dp, atof(char *);
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;指针只能指向某种特定类型的对象. (例外: 指向void类型的指针可以存放指向任何类型的指针,但不能间接引用其自身).&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ip&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;该语句表明表达式 *ip的结果是int类型. 该语法与声明变量(variable)的语法与声明该变量所在表达式的语法相似.因此, 对函数的声明也可采用这种方式.例:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;kt&#34;&gt;double&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;atof&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;指针只能指向某种特定类型的对象. (例外: 指向void类型的指针可以存放指向任何类型的指针,但不能间接引用其自身).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;5.2 指针与函数参数&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;C语言使用传值(pass by value)的方式将参数值传给被调用函数, 所以被调用函数不能直接修改主函数中变量的值.&lt;/p&gt;
 &lt;p&gt;若要达成修改主函数值的目标, 可以将指向所需的变量的指针传递给被调用函数&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;swap(&amp;amp;a,&amp;amp;b)
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;swap声明中所有参数都声明为指针, 并且通过这些指针来间接访问他们所指向的值.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;void swap(int *px, int *py){
-    int temp;
-    temp = *px;
-    *px = *py;
-    *py = temp;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;!-- raw HTML omitted --&gt;
-&lt;pre&gt;&lt;code&gt;int a[10];
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;定义一个长度为10的数组a, a[i] 则表示该数组的第i个元素.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;n&#34;&gt;swap&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;swap声明中所有参数都声明为指针, 并且通过这些指针来间接访问他们所指向的值.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;swap&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;px&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;py&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;){&lt;/span&gt;
+    &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;temp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;temp&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;px&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;px&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;py&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;py&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;temp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;5.3 指针与数组&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;声明&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;int *pa;
-pa = &amp;amp;a[0]
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;则将指针pa指向数组的第0个元素. (pa的值为数组元素a[0]的地址). 这样, 赋值语句&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;x = *pa;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;则能把a[0]中的内容复制到x中.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;];&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;定义一个长度为10的数组a, a[i] 则表示该数组的第i个元素.&lt;/p&gt;
+&lt;p&gt;声明&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pa&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;pa&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;则将指针pa指向数组的第0个元素. (pa的值为数组元素a[0]的地址). 这样, 赋值语句&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pa&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;则能把a[0]中的内容复制到x中.&lt;/p&gt;
 &lt;p&gt;根据指针运算的定义. pa + 1将指向数组的下一个元素. pa + i 将指向 pa 所指元素之后的第 i 个元素. pa - i 将指向 pa 所指元素之前的第 i 个元素. 例: *(pa + 1) 引用的是数组元素 a[1] 的内容.&lt;/p&gt;
 &lt;p&gt;执行赋值语句&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;pa = &amp;amp;a[0]
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;后, pa 和 a具有相同的值. 因为数组名所代表的就是该数组最开始的一个元素的地址.因此以上赋值语句可以写成:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;pa = a;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;因此, 通过数组和下标实现的表达式可等价的通过指针和偏移量实现.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;n&#34;&gt;pa&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;后, pa 和 a具有相同的值. 因为数组名所代表的就是该数组最开始的一个元素的地址.因此以上赋值语句可以写成:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;n&#34;&gt;pa&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;因此, 通过数组和下标实现的表达式可等价的通过指针和偏移量实现.&lt;/p&gt;
 &lt;p&gt;但不同之处在于, 指针是一个变量, 因此 pa = a 和 pa++ 都是合法的, 而数组名不是变量.&lt;/p&gt;
 &lt;p&gt;在函数定义中,&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;char s[]
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;和&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;char *s
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;是等价的.&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;和&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;s&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;是等价的.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;5.4 地址算数运算&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;指针的初始化: 有意义的指针初始化只能是0或者是表示地址的表达式, 对后者来说, 表达式所代表的地址必须是在此之前已定义的具有适当类型的数据的地址.&lt;/p&gt;
 &lt;p&gt;C语言保证, 0永远不是有效的数据地址, 因此, 返回值0可以表示发生了异常事件.&lt;/p&gt;
 &lt;p&gt;指针与整数不能互相转换, 但0是唯一例外. 常量0可以赋值给指针, 指针也可以和0进行比较. 程序中常使用符号常量NULL代替常量0 (定义在标准头文件 &amp;lt;stddef.h&amp;gt;中).&lt;/p&gt;
@@ -66,50 +71,50 @@ pa = &amp;amp;a[0]
 &lt;p&gt;指向相同数组中元素的两个指针之间的减法或比较运算,&lt;/p&gt;
 &lt;p&gt;将指针赋值为0或指针与0之间的比较运算.&lt;/p&gt;
 &lt;p&gt;其他所有形式的指针运算都是非法的.&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;strong&gt;5.5 字符指针与函数&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;以下定义有很大的差别:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;char amessage[] = &amp;quot;now is the time&amp;quot;; /*定义一个数组*/
-char *pmessage = &amp;quot;now is the time&amp;quot;; /*定义一个指针*/
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;amessage 是一个仅仅足以存放初始化字符串以及空字符&#39;\0&#39; 的一维数组. 数组中单个字符可以进行修改, 但amessage始终指向同一个存储位置.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;amessage&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;now is the time&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;cm&#34;&gt;/*定义一个数组*/&lt;/span&gt;
+&lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pmessage&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;now is the time&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;cm&#34;&gt;/*定义一个指针*/&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;amessage 是一个仅仅足以存放初始化字符串以及空字符&#39;\0&#39; 的一维数组. 数组中单个字符可以进行修改, 但amessage始终指向同一个存储位置.&lt;/p&gt;
 &lt;p&gt;另一方面, pmessage 是一个指针, 其值指向一个字符串常量.&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;strong&gt;5.6 指针数组以及指向指针的指针&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;例:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;#define MAXLINES 5000
-char *lineptr[MAXLINES]
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;表示lineptr是一个具有MAXLINES个元素的一维数组, 其中数组的每一个元素是一个指向char类型对象的指针. 也就是说, lineptr[i]是一个char指针, 而*lineptr[i]是该指针指向的第i个元素.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#define MAXLINES 5000
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lineptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MAXLINES&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;表示lineptr是一个具有MAXLINES个元素的一维数组, 其中数组的每一个元素是一个指向char类型对象的指针. 也就是说, lineptr[i]是一个char指针, 而*lineptr[i]是该指针指向的第i个元素.&lt;/p&gt;
 &lt;p&gt;由于lineptr本身是一个数组名, 可按照前面相同的方法将其作为指针使用.&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;strong&gt;5.7 多维数组&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;如果将二维数组作为参数传递给函数, 那么在函数的参数声明中必须指明数组的列数.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;f(int daytab[2][13]){...}
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;可以写成:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;f(int daytab[][13]){...}
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;因为行数不重要, 因此还可以改写成:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;f(int (*daytab)[13]){...}
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这种声明形式标明参数是一个指针, 它指向具有13个整型元素的一维数组. 因为方括号[]的优先级高于*, 所以需要使用圆括号.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;n&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;daytab&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;13&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]){...}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;可以写成:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;n&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;daytab&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[][&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;13&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]){...}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;因为行数不重要, 因此还可以改写成:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;n&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;daytab&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;13&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]){...}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这种声明形式标明参数是一个指针, 它指向具有13个整型元素的一维数组. 因为方括号[]的优先级高于*, 所以需要使用圆括号.&lt;/p&gt;
 &lt;p&gt;否则将变成:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;int *daytab[13]
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;表示声明一个数组, 其有13个元素, 每一个元素都是一个指向int对象的指针.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;daytab&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;13&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;表示声明一个数组, 其有13个元素, 每一个元素都是一个指向int对象的指针.&lt;/p&gt;
 &lt;p&gt;一般来说, 除数组的第一维(下标)可以不指定大小, 其余各维都必须明确指定大小.&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;strong&gt;5.8 指针数组的初始化&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;略(与其他类型对象的初始化语法相似)&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;strong&gt;5.9 指针与多维数组&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;有如下两个定义:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;int a[10][20]
-int *b[20]
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;从语法角度来说, a[3][4]和b[3][4]都是对一个int 对象的合法引用, 但a是一个真正的二维数组,分配了200个int类型长度的空间. 但是b定义仅仅分配了20个指针, 并且没有初始化, 他们的初始化必须以显式的方式进行,如static初始化或通过代码初始化.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;从语法角度来说, a[3][4]和b[3][4]都是对一个int 对象的合法引用, 但a是一个真正的二维数组,分配了200个int类型长度的空间. 但是b定义仅仅分配了20个指针, 并且没有初始化, 他们的初始化必须以显式的方式进行,如static初始化或通过代码初始化.&lt;/p&gt;
 &lt;p&gt;指针数组的一个重要优点在于, 数组的每一行长度可以不同.&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;strong&gt;5.9 命令行参数&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;调用主函数main时, 它带有两个参数. 第一个参数(argc, 用于参数计数)的值表示运行程序时命令行中参数的数目, 第二个参数(argv, 用于参数向量)是一个指向字符串数组的指针, 其中每一个字符串对应一个参数.&lt;/p&gt;
 &lt;p&gt;按照C语言约定, argv[0]是启动该程序的程序名, 因此argc的值至少为1.&lt;/p&gt;
 &lt;p&gt;ANSI 要求argv[argc]的值必须为一空指针.&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;strong&gt;5.11 指向函数的指针&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;定义qsort为:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;void qsort(void *lineptr, int left, int right, int (*comp)(void *,void *));
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;其中, 指针数组参数的类型为通用指针void *. 由于任何类型的指针都可以转换成void *类并在转换回原来的类型时不丢失信息.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;qsort&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lineptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;left&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;right&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;comp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;其中, 指针数组参数的类型为通用指针void *. 由于任何类型的指针都可以转换成void *类并在转换回原来的类型时不丢失信息.&lt;/p&gt;
 &lt;p&gt;qsort 的第四个参数声明如下&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;int (*comp)(void *,void *)
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;它表明comp是一个指向函数的指针, 该函数具有两个void * 类型的参数, 其返回值类型为int.&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;comp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;它表明comp是一个指向函数的指针, 该函数具有两个void * 类型的参数, 其返回值类型为int.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;5.12 复杂声明&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;(略)&lt;/p&gt;
 </description>
         </item>
@@ -121,37 +126,44 @@ int *b[20]
         <guid>https://example.com/p/steps-to-create-a-personal-site-with-hugo/</guid>
         <description>&lt;h2 id=&#34;a-personal-site-could-do-much-with-your-interview-and-make-you-more-competitive&#34;&gt;A personal site could do much with your interview and make you more competitive!&lt;/h2&gt;
 &lt;p&gt;In this paper I would share with you detailed steps for how to create a new public site using hugo, which is one of latest tools for building a site.&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;h2 id=&#34;getting-started&#34;&gt;Getting started&lt;/h2&gt;
+&lt;h3 id=&#34;prerequisite-tools&#34;&gt;Prerequisite Tools&lt;/h3&gt;
+&lt;p&gt;check if your computer have installed those tools when you are encounter issues in the process.&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://git-scm.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Git&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://golang.org/dl/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Go &amp;gt; 1.11&lt;/a&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;h2 id=&#34;step-1-install-hugo&#34;&gt;Step 1: Install Hugo&lt;/h2&gt;
+&lt;h3 id=&#34;mac&#34;&gt;Mac:&lt;/h3&gt;
+&lt;p&gt;If you are using mac, you can make use of brew package by typing the following command in terminal:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;brew install hugo
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;or&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;port install hugo
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;if you are using MacPorts.&lt;/p&gt;
 &lt;p&gt;Then you can simply jump to step 2 to continue.&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;h3 id=&#34;windows&#34;&gt;Windows:&lt;/h3&gt;
+&lt;p&gt;If you are using windows (like me), and if you are using &lt;strong&gt;Chocolately&lt;/strong&gt; for package management (which should be intergrated in PowerShell), you can install Hugo with the following one-liner:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;choco install hugo -confirm
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;or for the extended version:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;choco install hugo-extended -confirm
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;If you are using &lt;!-- raw HTML omitted --&gt;Scoop&lt;!-- raw HTML omitted --&gt; for package management, you can install Hugo with following:&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;If you are using &lt;strong&gt;Scoop&lt;/strong&gt; for package management, you can install Hugo with following:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;scoop install hugo
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;or&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;scoop install hugo-extended
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;for extended version.&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;h3 id=&#34;linux&#34;&gt;Linux&lt;/h3&gt;
 &lt;p&gt;Linux can use &lt;a class=&#34;link&#34; href=&#34;https://docs.brew.sh/Homebrew-on-Linux&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Homebrew&lt;/a&gt; with the following one-liner:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;brew install hugo
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;which is the same as in Mac.&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;h3 id=&#34;check-the-validity-of-hugo&#34;&gt;Check the validity of hugo&lt;/h3&gt;
+&lt;p&gt;after installation, you can check if your hugo are properly installed with the command:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;hugo version
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;it would show something that begin with:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;Hugo Static Site Generator v0.79.0-1415EFDC 
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;and you can then go to the next step!&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;h2 id=&#34;step-2-initialization-for-you-bolg-project&#34;&gt;Step 2: Initialization for you bolg project!&lt;/h2&gt;
+&lt;p&gt;After installation, you should be able to use the following command:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;hugo new site &amp;lt;name of your blog project&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;to initalize your blog.&lt;/p&gt;
 &lt;p&gt;In this example, I just name by blog project (it is not the name of the site) as &amp;ldquo;blog&amp;rdquo; and I could use the command:&lt;/p&gt;
@@ -168,7 +180,8 @@ d-----       16/12/2020  11:16 AM                blog
 &lt;pre&gt;&lt;code&gt;&amp;gt;cd blog
 blog/&amp;gt;ls
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;you could see the items that hugo has initialized for you.&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;h2 id=&#34;step-3-set-the-theme-for-your-site&#34;&gt;Step 3: Set the Theme for your site!&lt;/h2&gt;
+&lt;p&gt;the initial site created by hugo is a completely blank site and you could coding from the start to styling your site with the&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/content-management/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;basic toturial&lt;/a&gt; which is very time consuming and inefficient. Instead we can download existing themes that designed by others and make improvements based on it!
 &lt;a class=&#34;link&#34; href=&#34;https://themes.gohugo.io&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -189,7 +202,8 @@ blog/&amp;gt;ls
 &lt;pre&gt;&lt;code&gt;git clone https://github.com/CaiJimmy/hugo-theme-stack/ themes/hugo-theme-stack
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;then go to the themes/hugo-theme-stack/exampleSite and use the config inside the folder to replace the config.toml in the site root folder. Alternatively you can copy everything in the example site and overwrite things in your site root folder for a quicker start.&lt;/p&gt;
 &lt;p&gt;For some themes that using .yaml instead of .toml, you can delete the config.toml in the root folder and only leave the config.yaml provided by the theme as hugo is compatible of reading various format of config files.&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;h2 id=&#34;step-4-activate-your-site-locally&#34;&gt;Step 4: Activate your site locally!&lt;/h2&gt;
+&lt;p&gt;After you have done you theme setting, return back to your site root folder (in this example ../blog/) and use the following command:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;hugo server -t hugo-theme-stack --buildDrafts
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;or simply&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;hugo server 
@@ -218,24 +232,26 @@ Serving pages from memory
 Running in Fast Render Mode. For full rebuilds on change: hugo server --disableFastRender
 Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now you can go to the address and have a look with your new site!&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;h2 id=&#34;--adding-posts-to-your-site&#34;&gt;- Adding posts to your site&lt;/h2&gt;
+&lt;p&gt;Use the command:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;hugo new post/[name of your blog]/index.md
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;create the basic structure of your blog.&lt;/p&gt;
 &lt;p&gt;ps: you could also simply use:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;hugo new post/[name].md
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;to create your new post, but then if you want to attach images to your posts you would need to putting them mixed, which would increase the difficulty of maintence in the long run.&lt;/p&gt;
 &lt;p&gt;Then you could go to the /post/ folder and edit the .md file using various tools that supports reading markdown file. Those .md would be the content of your post.&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;h3 id=&#34;basic-info-about-a-post&#34;&gt;Basic Info about a post&lt;/h3&gt;
+&lt;p&gt;Upon creation, the .md file would contain a header for the post with three attributes:&lt;/p&gt;
 &lt;p&gt;title: the title of your post, you can edit as you wish, remember using quote if your title include spaces in it.&lt;/p&gt;
 &lt;p&gt;date: the time that the post was created, you could often leave it.&lt;/p&gt;
 &lt;p&gt;draft: true&lt;/p&gt;
 &lt;p&gt;this means this post is in draft mode, and would not included when building (mentioned later) you can leave it and avtivate &amp;ndash;buildDrafts flag when building the site or simply delete it if you think it is unnecessary.&lt;/p&gt;
 &lt;p&gt;Apart from these attributes, there are also some other attributes that can be included in the header:&lt;/p&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt;description&lt;!-- raw HTML omitted --&gt;: this part can be the subtitle of the post.&lt;/p&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt;slug&lt;!-- raw HTML omitted --&gt;: the slug of the post.&lt;/p&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt;image&lt;!-- raw HTML omitted --&gt;: the image you want to put at the top of the post.&lt;/p&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt;categories&lt;!-- raw HTML omitted --&gt;: the categories that you want to add to this post.&lt;/p&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; tags&lt;!-- raw HTML omitted --&gt;: the tage of the post.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;description&lt;/strong&gt;: this part can be the subtitle of the post.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;slug&lt;/strong&gt;: the slug of the post.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;image&lt;/strong&gt;: the image you want to put at the top of the post.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;categories&lt;/strong&gt;: the categories that you want to add to this post.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;tags&lt;/strong&gt;: the tage of the post.&lt;/p&gt;
 &lt;p&gt;The format of using categories is:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;categories:
     - Test
@@ -245,16 +261,17 @@ Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;In this case, this post is categorized as Test and toturial on the site.&lt;/p&gt;
 &lt;p&gt;there may be more attributes that could be added in the header, you can find them &lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/variables/page/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;h2 id=&#34;step-5-deploy-your-site-onto-remote-server&#34;&gt;Step 5: Deploy your site onto remote server.&lt;/h2&gt;
+&lt;p&gt;After writing and configuring your site, at the root folder, you can use:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;hugo
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;to build the site locally. (converting everything into html to get ready for deployment).&lt;/p&gt;
 &lt;p&gt;To put your site into Internet, you first need a respority to store all you resources for your site. Here we choose github as such store.&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;h3 id=&#34;1-login-to-github&#34;&gt;1. Login to Github&lt;/h3&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;www.github.com&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;or if you still not have one, register &lt;a class=&#34;link&#34; href=&#34;https://github.com/join&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;h3 id=&#34;2-create-a-new-respority&#34;&gt;2. create a new respority&lt;/h3&gt;
 &lt;p&gt;&lt;figure&gt;
 		&lt;a href=&#34;https://example.com/p/steps-to-create-a-personal-site-with-hugo/new_repo.png&#34; data-size=&#34;437x242&#34;&gt;
 			&lt;img srcset=&#34;https://example.com/p/steps-to-create-a-personal-site-with-hugo/new_repo_hu3a0a69b614b41e1ceed30d50aabd815b_23498_480x0_resize_box_2.png 480w, https://example.com/p/steps-to-create-a-personal-site-with-hugo/new_repo_hu3a0a69b614b41e1ceed30d50aabd815b_23498_1024x0_resize_box_2.png 1024w&#34;
@@ -265,7 +282,7 @@ Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
 		&lt;figcaption&gt;new repo&lt;/figcaption&gt;
 		
 	&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt;Note&lt;!-- raw HTML omitted --&gt;: the name of the repo has to be the same as your accout nick name.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: the name of the repo has to be the same as your accout nick name.&lt;/p&gt;
 &lt;p&gt;The format of the repo name should be:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;[your username in lower case].github.io
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;For example:&lt;/p&gt;
@@ -292,7 +309,7 @@ Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
 	&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;leave other as default or add anything you like in description.&lt;/p&gt;
 &lt;p&gt;Now you get a empty repo ready to store your site contents!&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;h2 id=&#34;step-6-uploading&#34;&gt;Step 6: Uploading&lt;/h2&gt;
 &lt;p&gt;Building the site by overwriting baseUrl and theme.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;hugo --theme=hugo-theme-stack --baseUrl=&amp;quot;https://[your username].github.io&amp;quot; --buildDrafts 
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;(you can ignore the &amp;ndash;buildDrafts flag if you removed draft attributes in your posts that your wish to build)&lt;/p&gt;
@@ -308,8 +325,8 @@ blog/public&amp;gt;git remote add origin [your repo address for your site]
 blog/public&amp;gt;git push -u origin master
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;then enter your username and password for your github account.&lt;/p&gt;
 &lt;p&gt;When the push completed, you should be able to access your personal site without much trouble!&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;h3 id=&#34;congradulations&#34;&gt;Congradulations!&lt;/h3&gt;
+&lt;h2 id=&#34;further-notes&#34;&gt;Further Notes&lt;/h2&gt;
 &lt;p&gt;You can modify the strucure of the existing theme or even create on your own! &lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/content-management/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Hugo Officical Site&lt;/a&gt; offered detailed instructions on how to customize your personal site and you can try it yourself!&lt;/p&gt;
 </description>

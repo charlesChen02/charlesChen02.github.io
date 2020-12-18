@@ -14,11 +14,10 @@
       
       <guid>https://example.com/p/steps-to-create-a-personal-site-with-hugo/</guid>
       <description>A personal site could do much with your interview and make you more competitive! In this paper I would share with you detailed steps for how to create a new public site using hugo, which is one of latest tools for building a site.
+Getting started Prerequisite Tools check if your computer have installed those tools when you are encounter issues in the process.
 Git
 Go &amp;gt; 1.11
-brew install hugo or
-port install hugo if you are using MacPorts.
-Then you can simply jump to step 2 to continue.</description>
+Step 1: Install Hugo Mac: If you are using mac, you can make use of brew package by typing the following command in terminal:</description>
     </item>
     
   </channel>
